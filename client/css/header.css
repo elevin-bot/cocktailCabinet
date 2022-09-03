@@ -1,0 +1,100 @@
+#header-nav {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  width: 98%;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #d4d4d4;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+  background-color: rgba(226, 245, 232, 0.276);
+  backdrop-filter: blur(5px);
+}
+
+#special_title {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 45px;
+}
+#special_title #S {
+  color: #3ed2ff;
+}
+#special_title #S::selection {
+  color: #3ed2ff;
+}
+#special_title #c::selection {
+  color: #ff443e;
+}
+#special_title #a::selection {
+  color: #ffa53e;
+}
+#special_title #n::selection {
+  color: #ffef3e;
+}
+#special_title #v::selection {
+  color: #75ff3e;
+}
+#special_title #e::selection {
+  color: #3efff5;
+}
+#special_title #n::selection {
+  color: #3e92ff;
+}
+#special_title #g::selection {
+  color: #953eff;
+}
+#special_title #e::selection {
+  color: #fc3eff;
+}
+#special_title #r::selection {
+  color: #ff3e4e;
+}
+#special_title #H::selection {
+  color: #3ed2ff;
+}
+#special_title #u::selection {
+  color: #ff5b3e;
+}
+#special_title #n::selection {
+  color: #fff53e;
+}
+#special_title #t::selection {
+  color: #ffaf3e;
+}
+
+#logo_png {
+  align-self: flex-start;
+  width: 70px;
+}
+#logo_png:hover {
+  transition: 0.7s ease-in-out;
+  transform: rotate(360deg);
+}
+
+#navList {
+  display: flex;
+
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin: 10px;
+  justify-content: space-evenly;
+}
+
+#navList > li {
+  margin: 5px;
+  width: 50px;
+  height: 50px;
+}
+#navList > li > img {
+  width: 40px;
+  height: 40px;
+}
+#navList > li > img:hover {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
