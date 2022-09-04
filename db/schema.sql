@@ -31,4 +31,10 @@ CREATE TABLE recipe_ingredients(
     volume integer NOT NULL
 );
 
-
+-- CREATE TABLE recipes_2 {
+--     id SERIAL PRIMARY KEY,
+--     cocktail_name text NOT NULL,
+--     recipe_ingredients text REFERENCES recipe_ingredients(recipe_id)
+--     description text,
+--     procedure text NOT NULL,
+-- };
