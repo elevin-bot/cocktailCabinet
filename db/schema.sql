@@ -1,3 +1,8 @@
+SELECT 'CREATE DATABASE cocktail_cabinet' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'cocktail_cabinet') \gexec
+
+\c cocktail_cabinet;
+
+DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name text,
@@ -5,30 +10,33 @@ CREATE TABLE users (
     password text NOT NULL
 );
 
-CREATE TABLE liquer_list (
+DROP TABLE IF EXISTS liquor CASCADE;
+CREATE TABLE liquor (
     id SERIAL PRIMARY KEY,
-    description text NOT NULL
+    name text NOT NULL
 );
 
+DROP TABLE IF EXISTS cabinet_contents;
 CREATE TABLE cabinet_contents (
     id SERIAL PRIMARY KEY,
     user_id integer REFERENCES users (id),
-    liquer_id integer REFERENCES liquer_list (id),
+    liquor_id integer REFERENCES liquor (id),
     volume integer NOT NULL
 );
 
-CREATE TABLE recipes (
+DROP TABLE IF EXISTS cocktail CASCADE;
+CREATE TABLE cocktail (
     id SERIAL PRIMARY KEY,
     name text NOT NULL,
     description text,
     procedure text
 );
 
-CREATE TABLE recipe_ingredients(
+DROP TABLE IF EXISTS cocktail_ingredients;
+CREATE TABLE cocktail_ingredients (
     id SERIAL PRIMARY KEY,
-    recipe_id integer REFERENCES recipes (id),
-    liquer_id integer REFERENCES liquer_list (id),
+    cocktail_id integer REFERENCES cocktail (id),
+    liquor_id integer REFERENCES liquor (id),
     volume integer NOT NULL
 );
-
 

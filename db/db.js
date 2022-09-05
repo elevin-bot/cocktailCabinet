@@ -1,7 +1,7 @@
-const pg = require('pg');
+const pg = require("pg");
 
 const db = new pg.Pool({
-  database: 'scavenger_hunt',
+  database: "cocktail_db",
 });
 
 module.exports = db;
