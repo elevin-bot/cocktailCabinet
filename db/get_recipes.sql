@@ -1,12 +1,9 @@
--- Get recipes where all required alcohol exist in cabinet
-select c.*
-from cocktail c
-join cocktail_ingredients ci on ci.cocktail_id = c.id
-where ci.liquor_id in (select i.liquor_id
-                       from   cocktail_ingredients i 
-                       join   cabinet_contents cc on cc.liquor_id = i.liquor_id
-                       where  i.volume <= cc.volume
-                       and    i.cocktail_id = ci.cocktail_id
-                      )
-
- 
+-- Get cocktails for which all required alcohol exist in the cabinet with sufficient volume
+select name from cocktail where id not in 
+    (select cocktail_id
+     from cocktail_ingredients ci
+     where not exists (select 1 from cabinet_contents cc
+                       where cc.user_id = 1
+                       and   cc.liquor_id = ci.liquor_id
+                       and   cc.volume >= ci.volume)
+    );
