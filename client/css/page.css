@@ -1,63 +1,21 @@
 #page {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 5%;
   gap: 10px;
 }
-#page h1 {
-  grid-column-start: 1;
-  grid-column-end: 3;
+
+.signUpDivMain,
+.searchDivMain,
+.loginDivMain {
+  display: flex;
+  gap: 20px;
 }
-/* container for one single challenge */
-.div_container_challenge {
+.signUpDivLeft,
+.loginDivLeft,
+.signUpDivRight,
+.loginDivRight {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: start;
-  padding: 10px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  border-radius: 20px;
-  animation: fadeIn 1s;
-  height: fit-content;
-}
-.div_container_challenge:hover {
-  transition: 1s;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.div_container_challenge h3 {
-  font-size: 20px;
-}
-.div_container_challenge h3:hover {
-  cursor: pointer;
-}
-.div_container_challenge p {
-  font-family: 'Oswald', sans-serif;
-  padding: 5px;
-  font-size: 16px;
-  border-left: 1px solid rgba(138, 138, 138, 0.44);
-}
-.div_container_challenge h3 {
-  padding: 5px;
-}
-.challenge-list_buttons-container {
-  display: flex;
-}
-.challenge-list_buttons-container button {
-  cursor: pointer;
-  background-color: transparent;
-  border-radius: 5px;
-  border-color: transparent;
-  margin: 5px;
-  padding: 10px 20px;
-  border-right-color: #3ed2ff7e;
-  transition: 00.7s;
-}
-.challenge-list_buttons-container button:hover {
-  border-right-color: transparent;
-  border-left-color: #3ed2ff7e;
-}
-.error {
-  font: caption;
-  color: red;
 }

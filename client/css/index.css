@@ -1,0 +1,19 @@
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 5px;
+  border-color: transparent;
+  margin: 5px;
+  padding: 10px 20px;
+  border-right-color: #3ed2ff7e;
+  transition: 00.7s;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+button:hover {
+  border-right-color: transparent;
+  border-left-color: #3ed2ff7e;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.hidden {
+  display: none;
+}
