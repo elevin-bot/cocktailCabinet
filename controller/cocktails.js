@@ -31,6 +31,7 @@ router.get("/api/liquor", async (req, res) => {
   res.json()
 });
 
+// Get cabinet contents for the logged on user
 router.get("/api/cabinet", async (req, res) => {
   const sql = `select l.name, cc.volume
                from   cabinet_contents cc
@@ -43,7 +44,7 @@ router.get("/api/cabinet", async (req, res) => {
   res.json()
 });
 
-
+// 
 router.post("/api/cabinet", (req, res) => {
   const { user_id, liquor_id, volume } = req.body;
   const sql = `
