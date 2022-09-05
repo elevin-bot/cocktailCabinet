@@ -25,12 +25,28 @@ router.get("/api/cocktails", async (req, res) => {
   res.json()
 });
 
-router.get("/api/liquers", (req, res) => {});
+router.get("/api/liquors", (req, res) => {
+  const sql = "SELECT * FROM liquor";
+  db.query(sql).then((dbRes) => {
+    res.json(dbRes.rows);
+  });
+});
 
 router.get("/api/cabinet", (req, res) => {});
 
 router.post("/api/cabinet", (req, res) => {
-  const {} = req.body;
+  const { user_id, liquor_id, volume } = req.body;
+  const sql = `
+    INSERT INTO cabinet_contents(user_id, liquor_id, volume) 
+    VALUES($1, $2, $3)
+  `;
+  db.query(sql, [user_id, liquor_id, volume])
+    .then((dbRes) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      res.status(500).json({});
+    });
 });
 
 router.delete("/api/cabinet/:id", (req, res) => {

@@ -27,6 +27,7 @@ router.post("/api/signup", (req, res) => {
             res.status(500).json({});
           });
       }
+      
     })
     .catch((err) => {
       res.status(500).json({});
