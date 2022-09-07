@@ -33,7 +33,7 @@ router.post("/api/signup", (req, res) => {
 router.post("/api/session", (req, res) => {
   const { email, password } = req.body;
 
-  db.query("SELECT * FROM users WHERE id=$1", [email])
+  db.query("SELECT * FROM users WHERE email=$1", [email])
     .then((dbRes) => {
       if (dbRes.rows.length === 0) {
         return res.status(400).json({
