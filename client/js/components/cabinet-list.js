@@ -20,8 +20,7 @@ export const renderCabinetList = () => {
   divMain.appendChild(buttonUpdate);
 
   // appending page
-  page.appendChild(divMain);
+  page.replaceChildren(divMain);
 };
-
 
 // view all alcohol in cabinet
