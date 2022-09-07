@@ -52,7 +52,9 @@ E'STEP 1 \n
 Pulse all the ingredients along with a handful of ice in a blender until smooth. Pour into a tall glass and garnish as you like. 
 ');
 
-INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(4, 4, 60);
+INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(4, 4, 60);\
+
+-- Lemon Lime BItters
 
 
 
