@@ -2,9 +2,14 @@ const express = require("express")
 const db = require("../db/db")
 const router = express.Router()
 
-// 3. Get full liquor list to be used in a drop down list for user to select when adding to cabinet
+// 3. Get liquor list that is not in user cabinet. Used in drop down list for user to select when adding to cabinet
 router.get("/api/liquor", async (req, res) => {
-  result = await db.query('select id, name from liquor order by name')
+  const sql = `select id, name 
+               from liquor 
+               where id not in (select liquor_id from cabinet_contents where user_id = $1)
+               order by name
+              `
+  const result = await db.query(sql, [req.session.user_id])
   console.log(result.rows)                    
   res.json(result.rows)
 });

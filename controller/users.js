@@ -9,7 +9,7 @@ router.post("/api/signup", (req, res) => {
   const { name, email, password } = req.body;
   const hashedPassword = generateHash(password);
 
-  db.query("SELECT FROM users WHERE email = $1", [email])
+  db.query("SELECT FROM users WHERE email=$1", [email])
     .then((dbRes) => {
       if (dbRes.rows.length === 1) {
         res.status(400).json({ message: "sorry user already exists" });
@@ -33,13 +33,12 @@ router.post("/api/signup", (req, res) => {
 router.post("/api/session", (req, res) => {
   const { email, password } = req.body;
 
-  db.query("SELECT * FROM users WHERE email=$1", [email])
+  db.query("SELECT id, name FROM users WHERE email=$1", [email])
     .then((dbRes) => {
       if (dbRes.rows.length === 0) {
         return res.status(400).json({
-          message:
-            "The e-mail address and/or password you specified are not correct.",
-        });
+          message: "The e-mail address and/or password you specified are not correct.",
+        })
       }
       const user = dbRes.rows[0];
       const hashedPassword = user.password;
@@ -49,11 +48,11 @@ router.post("/api/session", (req, res) => {
         req.session.name = user.name;
         return res.json({});
       }
-
-      return res.status(400).json({
-        message:
-          "The e-mail address and/or password you specified are not correct.",
-      });
+      else {
+        return res.status(400).json({
+          message: "The e-mail address and/or password you specified are not correct.",
+        })
+      }
     })
     .catch((err) => {
       res.status(500).json({});
