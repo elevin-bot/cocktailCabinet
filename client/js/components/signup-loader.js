@@ -1,1 +1,31 @@
 // welcome to your cabinet
+export const renderSignupLoader = () => {
+    // accessing page
+    const page = document.querySelector("#page");
+  
+    // create components
+    const mainComponent = document.createElement("div");
+    const signupLoaderTitle = document.createElement("h1");
+    const signupLoaderButton = document.createElement("button");
+    
+    // setting values
+    signupLoaderTitle.id = "signupLoaderTitle";
+    signupLoaderTitle.textContent = "Welcome to your secret cabinet"
+
+    signupLoaderButton.id = "signupLoaderButton";
+    signupLoaderButton.textContent = "Take me to my cabinet"
+
+
+    // appending
+    mainComponent.appendChild(signupLoaderTitle);
+    mainComponent.appendChild(signupLoaderButton);
+
+    // event listener
+    signupLoaderButton.addEventListener("click", () => {
+        renderCabinetList();
+    });
+    
+    // appending page
+    page.appendChild(mainComponent);
+  };
+  
