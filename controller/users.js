@@ -27,7 +27,6 @@ router.post("/api/signup", (req, res) => {
             res.status(500).json({});
           });
       }
-      
     })
     .catch((err) => {
       res.status(500).json({});
@@ -65,8 +64,6 @@ router.post("/api/session", (req, res) => {
     });
 });
 
-
-
 router.get("/api/session", (req, res) => {
   const id = req.session.id;
   const name = req.session.name;
@@ -77,7 +74,7 @@ router.get("/api/session", (req, res) => {
   //   return res.json({ email: email });
   // }
   if (!id || !name) {
-    return res.status(401).json({ message: "Unable to log in "});
+    return res.status(401).json({ message: "Unable to log in " });
   } else {
     return res.json({ id: id, name: name });
   }

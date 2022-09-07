@@ -46,5 +46,8 @@ export const renderLogin = () => {
   divMain.appendChild(divLeft);
   divMain.appendChild(divRight);
   // appending page
-  page.appendChild(divMain);
+  page.replaceChildren(divMain);
+  buttonSignup.addEventListener("click", () => {
+    renderSignup();
+  });
 };
