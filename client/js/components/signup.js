@@ -8,7 +8,7 @@ export const renderSignup = () => {
   const divMain = document.createElement("div");
   // creating div left
   const divLeft = document.createElement("div");
-  const form = document.createElement("form"); // FORM
+  const form = document.createElement("form");
   const h3 = document.createElement("h3");
   const inputName = document.createElement("input");
   const inputEmail = document.createElement("input");
@@ -64,6 +64,7 @@ export const renderSignup = () => {
   // appending page
   page.replaceChildren(divMain);
 
+  //Event Listener ------------------------
   // fetching data using AXIOS
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -76,7 +77,7 @@ export const renderSignup = () => {
     //   API access
     axios
       .post("/api/signup", data)
-      .then(() => {
+      .then((response) => {
         alert(response.data.message);
         renderLogin();
       })
@@ -91,7 +92,6 @@ export const renderSignup = () => {
       });
   });
 
-  //Event Listener ------------------------
   buttonUnlock.addEventListener("click", () => {
     renderLogin();
   });

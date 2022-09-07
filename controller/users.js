@@ -33,12 +33,13 @@ router.post("/api/signup", (req, res) => {
 router.post("/api/session", (req, res) => {
   const { email, password } = req.body;
 
-  db.query("SELECT id, name FROM users WHERE email=$1", [email])
+  db.query("SELECT id, name, password FROM users WHERE email=$1", [email])
     .then((dbRes) => {
       if (dbRes.rows.length === 0) {
         return res.status(400).json({
-          message: "The e-mail address and/or password you specified are not correct.",
-        })
+          message:
+            "The e-mail address and/or password you specified are not correct.",
+        });
       }
       const user = dbRes.rows[0];
       const hashedPassword = user.password;
@@ -47,15 +48,15 @@ router.post("/api/session", (req, res) => {
         req.session.user_id = user.id;
         req.session.name = user.name;
         return res.json({});
-      }
-      else {
+      } else {
         return res.status(400).json({
-          message: "The e-mail address and/or password you specified are not correct.",
-        })
+          message:
+            "The e-mail address and/or password you specified are not correct.",
+        });
       }
     })
     .catch((err) => {
-      res.status(500).json({});
+      res.status(500).json({ message: "lalala" });
     });
 });
 

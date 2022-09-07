@@ -20,9 +20,8 @@ export const renderCabinetView = () => {
   divMain.appendChild(buttonUpdate);
 
   // appending page
-  page.appendChild(divMain);
+  page.replaceChildren(divMain);
 };
-
 
 // view all alcohol in cabinet
 const cabinetShelf = document.createElement('ul');
