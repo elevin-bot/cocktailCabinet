@@ -23,7 +23,6 @@ router.post("/api/signup", (req, res) => {
             res.status(500).json({});
           });
       }
-      
     })
     .catch((err) => {
       res.status(500).json({});
@@ -38,7 +37,8 @@ router.post("/api/session", (req, res) => {
     .then((dbRes) => {
       if (dbRes.rows.length === 0) {
         return res.status(400).json({
-          message: "The e-mail address and/or password you specified are not correct.",
+          message:
+            "The e-mail address and/or password you specified are not correct.",
         });
       }
       const user = dbRes.rows[0];
@@ -51,7 +51,8 @@ router.post("/api/session", (req, res) => {
       }
 
       return res.status(400).json({
-        message: "The e-mail address and/or password you specified are not correct.",
+        message:
+          "The e-mail address and/or password you specified are not correct.",
       });
     })
     .catch((err) => {
@@ -65,7 +66,7 @@ router.get("/api/session", (req, res) => {
   const name = req.session.name;
 
   if (!user_id || !name) {
-    return res.status(401).json({ message: "Unable to log in "});
+    return res.status(401).json({ message: "Unable to log in " });
   } else {
     return res.json({ id: id, name: name });
   }
