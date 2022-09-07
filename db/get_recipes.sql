@@ -21,3 +21,8 @@ AND    cc.user_id = 1
 AND    ci.cocktail_id = 3;
 
 DELETE FROM cabinet_contents WHERE user_id = 1 AND volume <= 0;
+
+select id, name 
+from liquor 
+where id not in (select liquor_id from cabinet_contents where user_id = 1)
+order by name;

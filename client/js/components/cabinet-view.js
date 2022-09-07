@@ -1,4 +1,4 @@
-export const renderCabinetList = () => {
+export const renderCabinetView = () => {
   //accessing page
   const page = document.querySelector("#page");
 
@@ -24,3 +24,5 @@ export const renderCabinetList = () => {
 };
 
 // view all alcohol in cabinet
+const cabinetShelf = document.createElement('ul');
+
