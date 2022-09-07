@@ -4,16 +4,12 @@ const db = require("../db/db");
 
 const router = express.Router();
 
+// User signup
 router.post("/api/signup", (req, res) => {
   const { name, email, password } = req.body;
-
   const hashedPassword = generateHash(password);
 
-  const sqlCheckDuplicate = `
-  SELECT FROM users
-  WHERE email = $1
-  `;
-  db.query(sqlCheckDuplicate, [email])
+  db.query("SELECT FROM users WHERE email = $1", [email])
     .then((dbRes) => {
       if (dbRes.rows.length === 1) {
         res.status(400).json({ message: "sorry user already exists" });
@@ -33,11 +29,11 @@ router.post("/api/signup", (req, res) => {
     });
 });
 
+// User login
 router.post("/api/session", (req, res) => {
   const { email, password } = req.body;
 
-  const sql = "SELECT * FROM users WHERE id=$1";
-  db.query(sql, [email])
+  db.query("SELECT * FROM users WHERE id=$1", [email])
     .then((dbRes) => {
       if (dbRes.rows.length === 0) {
         return res.status(400).json({
@@ -49,7 +45,7 @@ router.post("/api/session", (req, res) => {
       const hashedPassword = user.password;
       if (isValidPassword(password, hashedPassword)) {
         req.session.email = email;
-        req.session.id = user.id;
+        req.session.user_id = user.id;
         req.session.name = user.name;
         return res.json({});
       }
@@ -64,16 +60,12 @@ router.post("/api/session", (req, res) => {
     });
 });
 
+// Check if user currently logged in
 router.get("/api/session", (req, res) => {
-  const id = req.session.id;
+  const user_id = req.session.user_id;
   const name = req.session.name;
 
-  // if (!email) {
-  //   return res.status(401).json({ message: "Not logging in" });
-  // } else {
-  //   return res.json({ email: email });
-  // }
-  if (!id || !name) {
+  if (!user_id || !name) {
     return res.status(401).json({ message: "Unable to log in " });
   } else {
     return res.json({ id: id, name: name });
