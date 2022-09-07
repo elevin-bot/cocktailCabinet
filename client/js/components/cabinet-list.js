@@ -22,3 +22,6 @@ export const renderCabinetList = () => {
   // appending page
   page.appendChild(divMain);
 };
+
+
+// view all alcohol in cabinet
