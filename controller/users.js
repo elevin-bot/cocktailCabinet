@@ -48,7 +48,8 @@ router.post("/api/session", (req, res) => {
         req.session.user_id = user.id;
         req.session.name = user.name;
         return res.json({});
-      } else {
+      } 
+      else {
         return res.status(400).json({
           message:
             "The e-mail address and/or password you specified are not correct.",
