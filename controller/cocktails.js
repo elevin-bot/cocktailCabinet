@@ -9,6 +9,7 @@ router.get("/api/liquor", async (req, res) => {
                where id not in (select liquor_id from cabinet_contents where user_id = $1)
                order by name
               `
+  console.log(req.session.user_id)              
   const result = await db.query(sql, [req.session.user_id])
   console.log(result.rows)                    
   res.json(result.rows)
