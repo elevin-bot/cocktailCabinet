@@ -3,7 +3,7 @@ const cocktailSelect = (cocktail_id) => {
     axios.patch(`/api/cabinet/${cocktail_id}`)    
         .then((response) => {
             // Return to parent page (Cabinet list page)
-        }).catch(err => page.textContent = 'Something went wrong (challengeDetails): ' + err.message)
+        }).catch(err => page.textContent = 'Something went wrong (cocktailSelect): ' + err.message)
 }
 
 // 9a. Add to cabinet
@@ -51,14 +51,32 @@ const addToCabinetRender = () => {
         axios.post("api/cabinet", data)
         .then(() => {
             // Return to parent page (Cabinet list page)
-        }).catch(err => page.textContent = 'Something went wrong (liquorList): ' + err.message)
+        }).catch(err => page.textContent = 'Something went wrong (addToCabinetRender): ' + err.message)
     
     })
 }
 
-    
 // 9b. Update cabinet
+const updateCabinet = (liquor_id, volume) => {
+    const data = {liquor_id, volume}    
+    axios.put("/api/cabinet", data)    
+        .then((response) => {
+            // Return to parent page (Cabinet list page)
+        }).catch(err => page.textContent = 'Something went wrong (updateCabinet): ' + err.message)
+}
 
 // 9c. Remove from cabinet
+const removeCabinet = (liquor_id) => {
+    axios.delete(`/api/cabinet/${liquor_id}`)    
+        .then((response) => {
+            // Return to parent page (Cabinet list page)
+        }).catch(err => page.textContent = 'Something went wrong (removeCabinet): ' + err.message)
+}
 
 // 9d. Delete cabinet
+const removeUserCabinet = () => {
+    axios.delete("/api/useer_cabinet")    
+        .then((response) => {
+            // Return to parent page (Cabinet list page)
+        }).catch(err => page.textContent = 'Something went wrong (removeCabinet): ' + err.message)
+}

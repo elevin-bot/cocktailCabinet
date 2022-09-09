@@ -48,7 +48,7 @@ router.get("/api/cocktails", async (req, res) => {
 });
 
 // 8. Update volumes in cabinet for the chosen recipe
-router.put("/api/cabinet/:id", async (req, res) => {
+router.patch("/api/cabinet/:id", async (req, res) => {
   const cocktail_id = req.params.id
 
   try {
@@ -99,9 +99,21 @@ router.put("/api/cabinet", async (req, res) => {
 })
 
 // 9c. Delete liquor from cabinet
-router.delete("/api/cabinet/:id", (req, res) => {
-  const id = req.params.id;
-  db.query("DELETE from cabinet_contents where user_id = $1 and liquor_id = $2", [req.session.user_id, id]).then(result => res.json({}))
+router.delete("/api/cabinet/:id", async (req, res) => {
+  const liquor_id = req.params.id;
+  const dbRes = await db.query("DELETE from cabinet_contents where user_id = $1 and liquor_id = $2", [req.session.user_id, liquor_id])
+  dbRes.json({})
+})
+
+// 9d. Delete user cabinet
+router.delete("/api/user_cabinet", async (req, res) => {
+  try {
+    const dbRes = await db.query("DELETE from cabinet_contents where user_id = $1", [req.session.user_id])
+    dbRes.json({})
+  }
+  catch(err) {
+    dbRes.status(500).json({})
+  }
 })
 
 // 10. Add new cocktail
