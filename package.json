@@ -15,7 +15,8 @@
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "require": "^2.4.20"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.17.1",

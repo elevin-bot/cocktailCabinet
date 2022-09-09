@@ -8,6 +8,7 @@ export const renderLogin = () => {
   const divMain = document.createElement("div");
   // creating div left
   const divLeft = document.createElement("div");
+  const form = document.createElement("form");
   const h3 = document.createElement("h3");
   const inputEmail = document.createElement("input");
   const inputPassword = document.createElement("input");
@@ -18,13 +19,17 @@ export const renderLogin = () => {
   const buttonSignup = document.createElement("button");
 
   //setting----------------------
+
   // setting main div
   divMain.className = "loginDivMain";
   // setting div left
   divLeft.className = "loginDivLeft";
   h3.textContent = "Login to access your cabinet";
   inputEmail.placeholder = "Email Address";
+  inputEmail.name = "email";
   inputPassword.placeholder = "Password";
+  inputPassword.name = "password";
+  inputPassword.type = "password";
   buttonUnlockCabinet.textContent = "Unlock your cabinet";
   // setting div right
   divRight.className = "loginDivRight";
@@ -35,9 +40,10 @@ export const renderLogin = () => {
 
   // appending divLeft
   divLeft.appendChild(h3);
-  divLeft.appendChild(inputEmail);
-  divLeft.appendChild(inputPassword);
-  divLeft.appendChild(buttonUnlockCabinet);
+  form.appendChild(inputEmail);
+  form.appendChild(inputPassword);
+  form.appendChild(buttonUnlockCabinet);
+  divLeft.appendChild(form);
   // appending divRight
   divRight.appendChild(p);
   divRight.appendChild(buttonSignup);
@@ -47,6 +53,34 @@ export const renderLogin = () => {
   divMain.appendChild(divRight);
   // appending page
   page.replaceChildren(divMain);
+
+  //Event Listener ------------------------
+
+  // fetching data using AXIOS
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const data = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+
+    //API access
+    axios
+      .post("/api/session", data)
+      .then((response) => {
+        renderCabinetView();
+        renderHeader();
+      })
+      .catch((error) => {
+        if (error.response.status === 500) {
+          alert("Oops, failed to sign up. Please try again.");
+        } else {
+          alert(error.response.data.message);
+        }
+      });
+  });
+  //redirect to Signup
   buttonSignup.addEventListener("click", () => {
     renderSignup();
   });

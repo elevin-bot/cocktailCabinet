@@ -1,4 +1,4 @@
-export const renderCabinetList = () => {
+export const renderCabinetView = () => {
   //accessing page
   const page = document.querySelector("#page");
 
@@ -20,8 +20,9 @@ export const renderCabinetList = () => {
   divMain.appendChild(buttonUpdate);
 
   // appending page
-  page.appendChild(divMain);
+  page.replaceChildren(divMain);
 };
 
-
 // view all alcohol in cabinet
+const cabinetShelf = document.createElement('ul');
+
