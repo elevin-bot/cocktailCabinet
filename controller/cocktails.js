@@ -2,20 +2,18 @@ const express = require("express")
 const db = require("../db/db")
 const router = express.Router()
 
-// 3. Get liquor list that is not in user cabinet. Used in drop down list for user to select when adding to cabinet
+// 5. Get liquor list that is not in user cabinet. Used in drop down list for user to select when adding to cabinet
 router.get("/api/liquor", async (req, res) => {
   const sql = `select id, name 
                from liquor 
                where id not in (select liquor_id from cabinet_contents where user_id = $1)
                order by name
               `
-  console.log(req.session.user_id)              
   const result = await db.query(sql, [req.session.user_id])
-  console.log(result.rows)                    
   res.json(result.rows)
 });
 
-// 4. Get cabinet contents for the logged on user
+// 6. Get cabinet contents for the logged on user
 router.get("/api/cabinet", async (req, res) => {
   const sql = `select l.id, l.name, cc.volume
                from   cabinet_contents cc
@@ -28,7 +26,7 @@ router.get("/api/cabinet", async (req, res) => {
   res.json(result.rows)
 });
 
-// 5. Get cocktails for which all required alcohol exists in the cabinet with sufficient volume
+// 7. Get cocktails for which all required alcohol exists in the cabinet with sufficient volume
 router.get("/api/cocktails", async (req, res) => {
   // const id = req.session.user_id;
   // result = await db.query('select id from users where email = $1', [email])
@@ -49,7 +47,7 @@ router.get("/api/cocktails", async (req, res) => {
   res.json(result.rows)
 });
 
-// 6. Update volumes in cabinet for the chosen recipe
+// 8. Update volumes in cabinet for the chosen recipe
 router.put("/api/cabinet/:id", async (req, res) => {
   const cocktail_id = req.params.id
 
@@ -72,7 +70,7 @@ router.put("/api/cabinet/:id", async (req, res) => {
   }
 })
 
-// 7a. Add liquor to cabinet
+// 9a. Add liquor to cabinet
 router.post("/api/cabinet", async (req, res) => {
   const { liquor_id, volume } = req.body
   
@@ -86,7 +84,7 @@ router.post("/api/cabinet", async (req, res) => {
   }
 })
 
-// 7b. Update liquor volume in cabinet
+// 9b. Update liquor volume in cabinet
 router.put("/api/cabinet", async (req, res) => {
   const { liquor_id, volume } = req.body;
 
@@ -100,13 +98,13 @@ router.put("/api/cabinet", async (req, res) => {
   }
 })
 
-// 7c. Delete liquor from cabinet
+// 9c. Delete liquor from cabinet
 router.delete("/api/cabinet/:id", (req, res) => {
   const id = req.params.id;
   db.query("DELETE from cabinet_contents where user_id = $1 and liquor_id = $2", [req.session.user_id, id]).then(result => res.json({}))
 })
 
-// 8. Add new cocktail
+// 10. Add new cocktail
 router.post("/api/cocktail", async (req, res) => {
   const { name, description, procedure } = req.body
   const cocktailIngredients = req.query.arr
