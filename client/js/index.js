@@ -3,12 +3,13 @@ import { renderSignup } from "./components/signup.js";
 import { renderCabinetView } from "./components/cabinet-view.js";
 import { renderLogin } from "./components/login.js";
 import { renderSignupLoader } from "./components/signup-loader.js";
+import { renderLogOut } from "./components/logout.js";
 
 renderHeader();
-renderSignup();
 
+window.renderHeader = renderHeader;
 window.renderSignup = renderSignup;
+window.renderSignupLoader = renderSignupLoader;
 window.renderLogin = renderLogin;
 window.renderCabinetView = renderCabinetView;
-window.renderSignupLoader = renderSignupLoader;
-// renderCabinetList();
+window.renderLogOut = renderLogOut;

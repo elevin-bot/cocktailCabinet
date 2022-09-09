@@ -29,7 +29,7 @@ export const renderLogin = () => {
   inputEmail.name = "email";
   inputPassword.placeholder = "Password";
   inputPassword.name = "password";
-  // inputPassword.type = "password";
+  inputPassword.type = "password";
   buttonUnlockCabinet.textContent = "Unlock your cabinet";
   // setting div right
   divRight.className = "loginDivRight";
@@ -64,13 +64,13 @@ export const renderLogin = () => {
       email: formData.get("email"),
       password: formData.get("password"),
     };
-    console.log(data);
 
     //API access
     axios
       .post("/api/session", data)
       .then((response) => {
-        renderCabinetList();
+        renderCabinetView();
+        renderHeader();
       })
       .catch((error) => {
         if (error.response.status === 500) {
@@ -80,7 +80,7 @@ export const renderLogin = () => {
         }
       });
   });
-  //Button simply goes to signup
+  //redirect to Signup
   buttonSignup.addEventListener("click", () => {
     renderSignup();
   });

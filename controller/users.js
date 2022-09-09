@@ -48,8 +48,7 @@ router.post("/api/session", (req, res) => {
         req.session.user_id = user.id;
         req.session.name = user.name;
         return res.json({});
-      } 
-      else {
+      } else {
         return res.status(400).json({
           message:
             "The e-mail address and/or password you specified are not correct.",
@@ -57,7 +56,7 @@ router.post("/api/session", (req, res) => {
       }
     })
     .catch((err) => {
-      res.status(500).json({ message: "lalala" });
+      res.status(500).json({});
     });
 });
 
@@ -69,7 +68,22 @@ router.get("/api/session", (req, res) => {
   if (!user_id || !name) {
     return res.status(401).json({ message: "Unable to log in " });
   } else {
-    return res.json({ id: id, name: name });
+    return res.json({ id: user_id, name: name });
+  }
+});
+
+// Logout
+router.delete("/api/session", (req, res) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (err) {
+        res.status(400).json({ message: "Unable to log out" });
+      } else {
+        res.json({ message: "Logout successfully" });
+      }
+    });
+  } else {
+    res.end();
   }
 });
 

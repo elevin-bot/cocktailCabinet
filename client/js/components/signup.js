@@ -15,6 +15,7 @@ export const renderSignup = () => {
   const inputPassword = document.createElement("input");
   const inputPasswordCheck = document.createElement("input");
   const buttonGetCabinet = document.createElement("button");
+  const spanError = document.createElement("span");
   // creating div right
   const divRight = document.createElement("div");
   const p = document.createElement("p");
@@ -37,6 +38,9 @@ export const renderSignup = () => {
   inputPasswordCheck.placeholder = "Enter your password again";
   inputPasswordCheck.type = "password";
   buttonGetCabinet.textContent = "Get me a cabinet";
+  buttonGetCabinet.disabled = true;
+  spanError.className = "error";
+
   // setting div right
   divRight.className = "signUpDivRight";
   p.textContent = "Already have a cabinet? Sign in to unlock it";
@@ -45,7 +49,6 @@ export const renderSignup = () => {
   //appending-----------------------
 
   // appending divLeft
-
   divLeft.appendChild(h3);
   form.appendChild(inputName);
   form.appendChild(inputEmail);
@@ -53,6 +56,7 @@ export const renderSignup = () => {
   form.appendChild(inputPasswordCheck);
   form.appendChild(buttonGetCabinet);
   divLeft.appendChild(form);
+  divLeft.appendChild(spanError);
 
   // appending divRight
   divRight.appendChild(p);
@@ -65,6 +69,7 @@ export const renderSignup = () => {
   page.replaceChildren(divMain);
 
   //Event Listener ------------------------
+
   // fetching data using AXIOS
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -79,7 +84,7 @@ export const renderSignup = () => {
       .post("/api/signup", data)
       .then((response) => {
         alert(response.data.message);
-        renderLogin();
+        renderSignupLoader(data);
       })
       .catch((error) => {
         console.log(error);
@@ -92,27 +97,31 @@ export const renderSignup = () => {
       });
   });
 
-  buttonUnlock.addEventListener("click", () => {
-    renderLogin();
+  //validating EMAIL - using class ValidateEmail()
+  inputEmail.addEventListener("focusout", (e) => {
+    const inputEmailValue = e.target.value;
+    if (validateEmail(inputEmailValue)) {
+      spanError.innerText = "";
+    } else {
+      spanError.innerText = "email is not valid";
+    }
   });
-  //checking input - using class validatePasswordFormat()
-  const spanError = document.createElement("span");
-  spanError.className = "error";
 
+  //validating PASSWORD - using class validatePasswordFormat()
   inputPassword.addEventListener("input", (e) => {
     const inputPasswordValue = e.target.value;
     const arrayErrors = validatePasswordFormat(inputPasswordValue);
     if (inputPasswordValue) {
       if (arrayErrors.length === 0) {
-        spanError.innerText = "";
+        spanError.innerText = "diferent passwords";
       } else {
         spanError.innerText = arrayErrors[0];
       }
-      divLeft.appendChild(spanError);
     } else {
       spanError.innerText = "";
     }
   });
+  //validating PASSWORD CHECK
   inputPasswordCheck.addEventListener("input", (e) => {
     const inputPasswordValue = e.target.value;
 
@@ -122,12 +131,29 @@ export const renderSignup = () => {
       } else if (inputPassword.value === inputPasswordCheck.value) {
         spanError.innerText = "";
       }
+      if (
+        inputName.value != "" &&
+        inputEmail.value != "" &&
+        inputPassword.value != "" &&
+        inputPasswordCheck.value != "" &&
+        spanError.textContent == ""
+      ) {
+        buttonGetCabinet.disabled = false;
+      }
       divLeft.appendChild(spanError);
     }
   });
+
+  //redirect to Login
+  buttonUnlock.addEventListener("click", () => {
+    renderLogin();
+  });
 };
 
-//UTIL
+//------------------------ULTIL-------------------------
+//------------------------ULTIL-------------------------
+//------------------------ULTIL-------------------------
+
 function validatePasswordFormat(password_input) {
   const errors = [];
   if (password_input.length < 8) {
@@ -142,3 +168,11 @@ function validatePasswordFormat(password_input) {
 
   return errors;
 }
+
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
