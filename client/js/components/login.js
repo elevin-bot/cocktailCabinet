@@ -39,18 +39,13 @@ export const renderLogin = () => {
   //appending-----------------------
 
   // appending divLeft
-  divLeft.appendChild(h3);
-  form.appendChild(inputEmail);
-  form.appendChild(inputPassword);
-  form.appendChild(buttonUnlockCabinet);
-  divLeft.appendChild(form);
+  form.append(inputEmail, inputPassword, buttonUnlockCabinet);
+  divLeft.append(h3, form);
   // appending divRight
-  divRight.appendChild(p);
-  divRight.appendChild(buttonSignup);
+  divRight.append(p, buttonSignup);
 
   // appending main div
-  divMain.appendChild(divLeft);
-  divMain.appendChild(divRight);
+  divMain.append(divLeft, divRight);
   // appending page
   page.replaceChildren(divMain);
 
@@ -69,7 +64,7 @@ export const renderLogin = () => {
     axios
       .post("/api/session", data)
       .then((response) => {
-        console.log(response)
+        console.log(response);
         renderCabinetView();
         renderHeader();
       })
