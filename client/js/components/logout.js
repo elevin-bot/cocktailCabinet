@@ -2,18 +2,18 @@ export const renderLogOut = () => {
   //accessing page
   const page = document.querySelector("#page");
 
-  //creating------------------------
+  //creating----------------------------
   const divMain = document.createElement("div");
   const p = document.createElement("p");
   const buttonYes = document.createElement("button");
   const buttonCancel = document.createElement("button");
 
-  //setting----------------------
-  p.textContent = "are you sure you want to logout?";
+  //setting-------------------------------
+  p.textContent = "Are you sure you want to logout?";
   buttonYes.textContent = "Yes";
   buttonCancel.textContent = "Cancel";
 
-  //appending-----------------------
+  //appending------------------------------
   divMain.appendChild(p);
   divMain.appendChild(buttonYes);
   divMain.appendChild(buttonCancel);
@@ -21,7 +21,7 @@ export const renderLogOut = () => {
   // appending page
   page.replaceChildren(divMain);
 
-  // Event Listeners
+  // Event Listeners -----------------------
   buttonYes.addEventListener("click", () => {
     axios
       .delete("/api/session")

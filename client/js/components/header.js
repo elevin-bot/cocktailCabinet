@@ -8,7 +8,6 @@ export const renderHeader = () => {
 
   //creating
   const logOUtButton = document.createElement("button");
-
   const h1AfterLogin = document.createElement("h1");
   const span = document.createElement("span");
 
@@ -36,11 +35,10 @@ export const renderHeader = () => {
     .catch((err) => {
       //remove loader
       header.removeChild(h1Loader);
-
+      //creating
       const h1 = document.createElement("h1");
-      h1.id = "h1Header";
-
       //setting
+      h1.id = "h1Header";
       h1.textContent = "Cocktail Cabinet";
       //appending
       header.appendChild(h1);

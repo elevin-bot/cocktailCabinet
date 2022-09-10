@@ -54,7 +54,7 @@ export const renderLogin = () => {
   // appending page
   page.replaceChildren(divMain);
 
-  //Event Listener ------------------------
+  //Event Listeners ------------------------
 
   // fetching data using AXIOS
   form.addEventListener("submit", (event) => {
@@ -80,6 +80,7 @@ export const renderLogin = () => {
         }
       });
   });
+
   //redirect to Signup
   buttonSignup.addEventListener("click", () => {
     renderSignup();

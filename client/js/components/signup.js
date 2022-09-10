@@ -27,6 +27,7 @@ export const renderSignup = () => {
   divMain.className = "signUpDivMain";
   // setting div left
   divLeft.className = "signUpDivLeft";
+  form.name = "form";
   h3.textContent = "Sign up to get your cabinet";
   inputName.placeholder = "Enter your name";
   inputName.name = "name";
@@ -36,7 +37,9 @@ export const renderSignup = () => {
   inputPassword.name = "password";
   inputPassword.type = "password";
   inputPasswordCheck.placeholder = "Enter your password again";
+  inputPasswordCheck.name = "passwordCheck";
   inputPasswordCheck.type = "password";
+  buttonGetCabinet.name = "buttonGetCabinet";
   buttonGetCabinet.textContent = "Get me a cabinet";
   buttonGetCabinet.disabled = true;
   spanError.className = "error";
@@ -88,7 +91,6 @@ export const renderSignup = () => {
       })
       .catch((error) => {
         console.log(error);
-
         if (error.response.status === 500) {
           alert("Oops, failed to sign up. Please try again.");
         } else {
@@ -97,53 +99,27 @@ export const renderSignup = () => {
       });
   });
 
-  //validating EMAIL - using class ValidateEmail()
-  inputEmail.addEventListener("focusout", (e) => {
-    const inputEmailValue = e.target.value;
-    if (validateEmail(inputEmailValue)) {
-      spanError.innerText = "";
-    } else {
-      spanError.innerText = "email is not valid";
-    }
+  //validating NAME
+  inputName.addEventListener("focusout", () => {
+    validateForm();
   });
-
-  //validating PASSWORD - using class validatePasswordFormat()
-  inputPassword.addEventListener("input", (e) => {
-    const inputPasswordValue = e.target.value;
-    const arrayErrors = validatePasswordFormat(inputPasswordValue);
-    if (inputPasswordValue) {
-      if (arrayErrors.length === 0) {
-        spanError.innerText = "diferent passwords";
-      } else {
-        spanError.innerText = arrayErrors[0];
-      }
-    } else {
-      spanError.innerText = "";
-    }
+  inputName.addEventListener("input", () => {
+    validateForm();
+  });
+  //validating EMAIL - using class ValidateEmail()
+  inputEmail.addEventListener("focusout", () => {
+    validateForm();
+  });
+  inputEmail.addEventListener("input", () => {
+    validateForm();
+  });
+  inputPassword.addEventListener("input", () => {
+    validateForm();
   });
   //validating PASSWORD CHECK
   inputPasswordCheck.addEventListener("input", (e) => {
-    const inputPasswordValue = e.target.value;
-
-    if (inputPasswordValue) {
-      if (inputPassword.value !== inputPasswordCheck.value) {
-        spanError.innerText = "diferent passwords";
-      } else if (inputPassword.value === inputPasswordCheck.value) {
-        spanError.innerText = "";
-      }
-      if (
-        inputName.value != "" &&
-        inputEmail.value != "" &&
-        inputPassword.value != "" &&
-        inputPasswordCheck.value != "" &&
-        spanError.textContent == ""
-      ) {
-        buttonGetCabinet.disabled = false;
-      }
-      divLeft.appendChild(spanError);
-    }
+    validateForm();
   });
-
   //redirect to Login
   buttonUnlock.addEventListener("click", () => {
     renderLogin();
@@ -154,7 +130,51 @@ export const renderSignup = () => {
 //------------------------ULTIL-------------------------
 //------------------------ULTIL-------------------------
 
-function validatePasswordFormat(password_input) {
+const validateForm = () => {
+  const spanError = document.querySelector(".error");
+  const name = document.form.name.value;
+  const email = document.form.email.value;
+  const password = document.form.password.value;
+  const passwordCheck = document.form.passwordCheck.value;
+  const buttonGetCabinet = document.form.buttonGetCabinet;
+  const errorsArray = [];
+  //name
+  if (!name) {
+    errorsArray.push("Please provide your name.");
+  }
+  //email
+  if (email) {
+    if (validateEmail(email)) {
+    } else {
+      errorsArray.push("Email is not valid");
+    }
+  }
+  //password
+  if (password) {
+    const passwordErrorArray = validatePasswordFormat(password);
+    if (passwordErrorArray.length === 0) {
+    } else {
+      errorsArray.push(passwordErrorArray[0]);
+    }
+  }
+  // password check
+  if (passwordCheck) {
+    if (passwordCheck === password) {
+    } else {
+      errorsArray.push("Diferent passwords");
+    }
+  }
+  //setting
+  spanError.textContent = errorsArray[0];
+  // release button
+  if (name && email && password && passwordCheck && errorsArray.length === 0) {
+    buttonGetCabinet.disabled = false;
+  } else {
+    buttonGetCabinet.disabled = true;
+  }
+};
+
+const validatePasswordFormat = (password_input) => {
   const errors = [];
   if (password_input.length < 8) {
     errors.push("Your password must be at least 8 characters");
@@ -165,9 +185,8 @@ function validatePasswordFormat(password_input) {
   if (password_input.search(/[0-9]/) < 0) {
     errors.push("Your password must contain at least one digit.");
   }
-
   return errors;
-}
+};
 
 const validateEmail = (email) => {
   return String(email)
