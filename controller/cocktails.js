@@ -59,14 +59,14 @@ router.patch("/api/cabinet/:id", async (req, res) => {
                  WHERE  ci.liquor_id = cc.liquor_id
                  AND    cc.user_id = $1
                  AND    ci.cocktail_id = $2`
-    dbRes = await db.query(sql, [req.session.user_id, cocktail_id])
+    let dbRes = await db.query(sql, [req.session.user_id, cocktail_id])
 
     // Delete bottles if volume zero or less
     dbRes = await db.query("DELETE FROM cabinet_contents WHERE user_id = $1 AND volume <= 0;", [req.session.user_id])
-    dbRes.json({})
+    res.json({})
   }
   catch(err) {
-    dbRes.status(500).json({})
+    res.status(500).json({})
   }
 })
 
@@ -77,10 +77,10 @@ router.post("/api/cabinet", async (req, res) => {
   try {
     const sql = "INSERT INTO cabinet_contents(user_id, liquor_id, volume) VALUES($1, $2, $3)"
     const dbRes = db.query(sql, [req.session.user_id, liquor_id, volume])
-    dbRes.json({})
+    res.json({})
   }
   catch(err) {
-    dbRes.status(500).json({})
+    res.status(500).json({})
   }
 })
 
@@ -91,10 +91,10 @@ router.put("/api/cabinet", async (req, res) => {
   try {
     const sql = "UPDATE cabinet_contents set volume = $3) WHERE user_id = $1 and liquor_id = $2"
     const dbRes = await db.query(sql, [req.session.user_id, liquor_id, volume])
-    dbRes.json({})
+    res.json({})
   }
   catch(err) {
-    dbRes.status(500).json({})
+    res.status(500).json({})
   }
 })
 
@@ -109,10 +109,10 @@ router.delete("/api/cabinet/:id", async (req, res) => {
 router.delete("/api/user_cabinet", async (req, res) => {
   try {
     const dbRes = await db.query("DELETE from cabinet_contents where user_id = $1", [req.session.user_id])
-    dbRes.json({})
+    res.json({})
   }
   catch(err) {
-    dbRes.status(500).json({})
+    res.status(500).json({})
   }
 })
 
@@ -132,10 +132,10 @@ router.post("/api/cocktail", async (req, res) => {
       const sql = "INSERT INTO cocktail_ingredients(cocktail_id, liquor_id, volume) VALUES($1, $2, $3)"
       const dbRes = db.query(sql, [cocktail_id, element.liquor_id, element.volume])  
     })
-    dbRes.json({})
+    res.json({})
   }
   catch(err) {
-    dbRes.status(500).json({})
+    res.status(500).json({})
   }
 })
 
