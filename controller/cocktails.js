@@ -28,11 +28,6 @@ router.get("/api/cabinet", async (req, res) => {
 
 // 7. Get cocktails for which all required alcohol exists in the cabinet with sufficient volume
 router.get("/api/cocktails", async (req, res) => {
-  // const id = req.session.user_id;
-  // result = await db.query('select id from users where email = $1', [email])
-  // const id = result.rows[0].id
-  // console.log(id)
-  console.log("is this working")
   const sql = `select id, name, description from cocktail where id not in 
                   (select cocktail_id
                    from   cocktail_ingredients ci
@@ -63,7 +58,8 @@ router.patch("/api/cabinet/:id", async (req, res) => {
 
     // Delete bottles if volume zero or less
     dbRes = await db.query("DELETE FROM cabinet_contents WHERE user_id = $1 AND volume <= 0;", [req.session.user_id])
-    res.json({})
+    dbRes = await db.query("select name, description, procedure from cocktail where id=$1;", [cocktail_id])
+    res.json(dbRes.rows)
   }
   catch(err) {
     res.status(500).json({})

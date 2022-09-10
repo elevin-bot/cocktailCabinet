@@ -5,7 +5,8 @@ window.renderCabinetView = renderCabinetView;
 export const cocktailSelect = (cocktail_id) => {
     axios.patch(`/api/cabinet/${cocktail_id}`)    
         .then((response) => {
-            // Return to parent page (Cabinet list page)
+            // Return cocktail details
+            return response
         }).catch(err => page.textContent = 'Something went wrong (cocktailSelect): ' + err.message)
 }
 
