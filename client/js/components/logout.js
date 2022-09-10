@@ -14,9 +14,7 @@ export const renderLogOut = () => {
   buttonCancel.textContent = "Cancel";
 
   //appending------------------------------
-  divMain.appendChild(p);
-  divMain.appendChild(buttonYes);
-  divMain.appendChild(buttonCancel);
+  divMain.append(p, buttonYes, buttonCancel);
 
   // appending page
   page.replaceChildren(divMain);
