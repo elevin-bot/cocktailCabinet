@@ -86,11 +86,9 @@ export const renderSignup = () => {
     axios
       .post("/api/signup", data)
       .then((response) => {
-        alert(response.data.message);
         renderSignupLoader(data);
       })
       .catch((error) => {
-        console.log(error);
         if (error.response.status === 500) {
           alert("Oops, failed to sign up. Please try again.");
         } else {
