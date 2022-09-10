@@ -32,8 +32,8 @@ router.get("/api/cocktails", async (req, res) => {
   // result = await db.query('select id from users where email = $1', [email])
   // const id = result.rows[0].id
   // console.log(id)
-
-  const sql = `select cocktail_id, name, description from cocktail where id not in 
+  console.log("is this working")
+  const sql = `select id, name, description from cocktail where id not in 
                   (select cocktail_id
                    from   cocktail_ingredients ci
                    where  not exists (select 1 from cabinet_contents cc

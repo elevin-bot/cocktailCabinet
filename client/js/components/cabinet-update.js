@@ -1,3 +1,6 @@
+import { renderCabinetView } from "./cabinet-view.js";
+window.renderCabinetView = renderCabinetView;
+
 // 8. Update volumes in cabinet for the chosen recipe
 export const cocktailSelect = (cocktail_id) => {
     axios.patch(`/api/cabinet/${cocktail_id}`)    
@@ -8,10 +11,12 @@ export const cocktailSelect = (cocktail_id) => {
 
 // 9a. Add to cabinet
 export const addToCabinetRender = () => {
+    console.log("send me to cabinet render")
     const page = document.querySelector("#page");
     const h3 = document.createElement("h3");
     h3.textContent = 'Add alcohol to your cabinet'
-    const form = document.createElement("form");
+    const addForm = document.createElement("form");
+    addForm.id = "addForm"
     const select = document.createElement("select");
     select.id = 'selectAlcohol'
 
@@ -36,10 +41,10 @@ export const addToCabinetRender = () => {
     const inputVolume = document.createElement("input");
     inputVolume.placeholder = "Bottle volume";
     inputVolume.setAttribute('required', '')
-    form.append(h3, select, inputVolume, addBtn)
-    page.append(form, cancelBtn)
+    addForm.append(h3, select, inputVolume, addBtn)
+    page.append(addForm, cancelBtn)
 
-    form.addEventListener("submit", (event) => {
+    addForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const data = {
           liquor_id: select.options[select.selectedIndex].value,
@@ -47,12 +52,16 @@ export const addToCabinetRender = () => {
         }
 
         // API call
+        console.log(data)
         axios.post("api/cabinet", data)
         .then(() => {
+            renderCabinetView();
             // Return to parent page (Cabinet list page)
         }).catch(err => page.textContent = 'Something went wrong (addToCabinetRender): ' + err.message)
-    
     })
+
+    cancelBtn.addEventListener("click", renderCabinetView);    
+    
 }
 
 // 9b. Update cabinet

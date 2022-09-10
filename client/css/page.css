@@ -9,6 +9,9 @@
 .signUpDivMain,
 
 .searchDivMain {
+
+  
+  width: 80%;
   
   border: 10px black;
 
@@ -43,6 +46,7 @@
 
 #cabinet {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   
 }
@@ -78,8 +82,21 @@
   height: 5px;
   width: fit-content;
   font-size: 12;
+  text-transform: uppercase;
 }
 
 .bottleLabel {
   align-content: bottom;
+}
+
+#addForm {
+  align-self: center;
+  z-index: 2;
+  background-color: red;
+  border: 20px;
+  padding: 20px;
+}
+
+.selectCocktailBtn {
+  background-color: blue;
 }
