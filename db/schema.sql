@@ -13,7 +13,8 @@ CREATE TABLE users (
 DROP TABLE IF EXISTS liquor CASCADE;
 CREATE TABLE liquor (
     id SERIAL PRIMARY KEY,
-    name text NOT NULL
+    name text NOT NULL,
+    image text
 );
 
 DROP TABLE IF EXISTS cabinet_contents;

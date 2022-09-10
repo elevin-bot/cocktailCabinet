@@ -15,7 +15,7 @@ router.get("/api/liquor", async (req, res) => {
 
 // 6. Get cabinet contents for the logged on user
 router.get("/api/cabinet", async (req, res) => {
-  const sql = `select l.id, l.name, cc.volume
+  const sql = `select l.id, l.name, cc.volume, l.image
                from   cabinet_contents cc
                join   liquor l on l.id = cc.liquor_id
                where  cc.user_id = $1
