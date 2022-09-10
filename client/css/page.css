@@ -98,5 +98,16 @@
 }
 
 .selectCocktailBtn {
-  background-color: blue;
+  background-color: pink;
+}
+
+
+.recipeBook{
+  z-index: 5;
+  border: 3px solid black;
+};
+
+.recipeTitle {
+  font: 26;
+  font-weight: bold;
 }

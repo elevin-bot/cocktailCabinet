@@ -3,8 +3,10 @@ window.renderCabinetView = renderCabinetView;
 
 // 8. Update volumes in cabinet for the chosen recipe
 export const cocktailSelect = (cocktail_id) => {
+    console.log(cocktail_id)
     axios.patch(`/api/cabinet/${cocktail_id}`)    
         .then((response) => {
+            console.log(response)
             // Return cocktail details
             return response
         }).catch(err => page.textContent = 'Something went wrong (cocktailSelect): ' + err.message)

@@ -14,7 +14,7 @@ import { renderCocktailView } from "./components/cocktail-view.js";
 
 
 renderHeader();
-renderCocktailView();
+
 
 
 window.renderHeader = renderHeader;
@@ -28,4 +28,5 @@ window.addToCabinetRender = addToCabinetRender;
 window.updateCabinet = updateCabinet;
 window.removeCabinet = removeCabinet;
 window.removeUserCabinet = removeUserCabinet;
-window.renderCocktailView = renderCabinetView;
+window.renderCocktailView = renderCocktailView;
+
