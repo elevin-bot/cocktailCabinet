@@ -1,4 +1,7 @@
+
+
 export const renderCabinetView = () => {
+  debugger
   //accessing page
   const page = document.querySelector("#page");
 
@@ -6,6 +9,10 @@ export const renderCabinetView = () => {
   const divMain = document.createElement("div");
   const buttonSearch = document.createElement("button");
   const buttonUpdate = document.createElement("button");
+
+  const buttonHeader = document.createElement("div");
+  buttonHeader = document.id = "buttonHeader"
+  
   //setting----------------------
   buttonSearch.id = "buttonSearch";
   buttonSearch.textContent = "Get me drunk";
@@ -47,6 +54,8 @@ export const renderCabinetView = () => {
 
     cabinet.appendChild(cabinetShelf);
     divMain.appendChild(cabinet);
+
+    
 
   };
 
