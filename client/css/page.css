@@ -31,3 +31,36 @@
   flex-direction: column;
   width: 100%;
 }
+
+
+#cabinet {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cabinetShelf {
+  display: flex;
+}
+
+.cabinetBottle {
+  border: 3px grey;
+  border-radius: 5px;
+  height: 5rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  margin: 2px;
+}
+
+.bottleName {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.bottleVolume {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
