@@ -9,9 +9,13 @@ import { addToCabinetRender } from "./components/cabinet-update.js";
 import { updateCabinet } from "./components/cabinet-update.js";
 import { removeCabinet } from "./components/cabinet-update.js";
 import { removeUserCabinet } from "./components/cabinet-update.js";
+import { renderCocktailView } from "./components/cocktail-view.js";
+
 
 
 renderHeader();
+
+
 
 window.renderHeader = renderHeader;
 window.renderSignup = renderSignup;
@@ -24,3 +28,5 @@ window.addToCabinetRender = addToCabinetRender;
 window.updateCabinet = updateCabinet;
 window.removeCabinet = removeCabinet;
 window.removeUserCabinet = removeUserCabinet;
+window.renderCocktailView = renderCocktailView;
+
