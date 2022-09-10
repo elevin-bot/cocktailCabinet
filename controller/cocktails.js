@@ -28,7 +28,7 @@ router.get("/api/cabinet", async (req, res) => {
 
 // 7. Get cocktails for which all required alcohol exists in the cabinet with sufficient volume
 router.get("/api/cocktails", async (req, res) => {
-  const sql = `select id, name, description from cocktail where id not in 
+  const sql = `select id, name, description, procedure from cocktail where id not in 
                   (select cocktail_id
                    from   cocktail_ingredients ci
                    where  not exists (select 1 from cabinet_contents cc

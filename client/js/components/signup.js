@@ -1,3 +1,4 @@
+//1. Sign Up
 export const renderSignup = () => {
   //accessing page
   const page = document.querySelector("#page");
@@ -53,21 +54,22 @@ export const renderSignup = () => {
 
   // appending divLeft
   divLeft.appendChild(h3);
-  form.appendChild(inputName);
-  form.appendChild(inputEmail);
-  form.appendChild(inputPassword);
-  form.appendChild(inputPasswordCheck);
-  form.appendChild(buttonGetCabinet);
+  form.append(
+    inputName,
+    inputEmail,
+    inputPassword,
+    inputPasswordCheck,
+    buttonGetCabinet
+  );
   divLeft.appendChild(form);
   divLeft.appendChild(spanError);
 
   // appending divRight
-  divRight.appendChild(p);
-  divRight.appendChild(buttonUnlock);
+  divRight.append(p, buttonUnlock);
 
   // appending main div
-  divMain.appendChild(divLeft);
-  divMain.appendChild(divRight);
+  divMain.append(divLeft, divRight);
+
   // appending page
   page.replaceChildren(divMain);
 
