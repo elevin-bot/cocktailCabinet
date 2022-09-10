@@ -75,7 +75,7 @@ const removeCabinet = (liquor_id) => {
 
 // 9d. Delete cabinet
 const removeUserCabinet = () => {
-    axios.delete("/api/useer_cabinet")    
+    axios.delete("/api/user_cabinet")    
         .then((response) => {
             // Return to parent page (Cabinet list page)
         }).catch(err => page.textContent = 'Something went wrong (removeCabinet): ' + err.message)

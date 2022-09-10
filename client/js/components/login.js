@@ -69,6 +69,7 @@ export const renderLogin = () => {
     axios
       .post("/api/session", data)
       .then((response) => {
+        console.log(response)
         renderCabinetView();
         renderHeader();
       })

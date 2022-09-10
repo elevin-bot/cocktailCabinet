@@ -1,7 +1,5 @@
-
-
 export const renderCabinetView = () => {
-  debugger
+ 
   //accessing page
   const page = document.querySelector("#page");
 
@@ -11,7 +9,7 @@ export const renderCabinetView = () => {
   const buttonUpdate = document.createElement("button");
 
   const buttonHeader = document.createElement("div");
-  buttonHeader = document.id = "buttonHeader"
+  buttonHeader.id = "buttonHeader"
   
   //setting----------------------
   buttonSearch.id = "buttonSearch";
