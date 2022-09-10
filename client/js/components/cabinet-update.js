@@ -1,5 +1,5 @@
 // 8. Update volumes in cabinet for the chosen recipe
-const cocktailSelect = (cocktail_id) => {
+export const cocktailSelect = (cocktail_id) => {
     axios.patch(`/api/cabinet/${cocktail_id}`)    
         .then((response) => {
             // Return to parent page (Cabinet list page)
@@ -7,8 +7,7 @@ const cocktailSelect = (cocktail_id) => {
 }
 
 // 9a. Add to cabinet
-// export const addToCabinetRender = () => {
-const addToCabinetRender = () => {
+export const addToCabinetRender = () => {
     const page = document.querySelector("#page");
     const h3 = document.createElement("h3");
     h3.textContent = 'Add alcohol to your cabinet'
@@ -57,7 +56,7 @@ const addToCabinetRender = () => {
 }
 
 // 9b. Update cabinet
-const updateCabinet = (liquor_id, volume) => {
+export const updateCabinet = (liquor_id, volume) => {
     const data = {liquor_id, volume}    
     axios.put("/api/cabinet", data)    
         .then((response) => {
@@ -66,7 +65,7 @@ const updateCabinet = (liquor_id, volume) => {
 }
 
 // 9c. Remove from cabinet
-const removeCabinet = (liquor_id) => {
+export const removeCabinet = (liquor_id) => {
     axios.delete(`/api/cabinet/${liquor_id}`)    
         .then((response) => {
             // Return to parent page (Cabinet list page)
@@ -74,7 +73,7 @@ const removeCabinet = (liquor_id) => {
 }
 
 // 9d. Delete cabinet
-const removeUserCabinet = () => {
+export const removeUserCabinet = () => {
     axios.delete("/api/user_cabinet")    
         .then((response) => {
             // Return to parent page (Cabinet list page)
