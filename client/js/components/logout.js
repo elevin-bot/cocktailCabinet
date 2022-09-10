@@ -26,7 +26,6 @@ export const renderLogOut = () => {
     axios
       .delete("/api/session")
       .then((response) => {
-        alert(response.data.message);
         // ############ IMPORTANT #############
         location = "/"; // has to be changed after pop pup function is working
       })
