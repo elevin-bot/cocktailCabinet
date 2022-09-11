@@ -1,4 +1,3 @@
-
 export const renderCabinetView = () => {
  
   //accessing page
@@ -51,33 +50,33 @@ export const renderCabinetView = () => {
         let bottleName = document.createElement("div");
         let bottleVolume = document.createElement("div");
         let bottleLabel = document.createElement("div");
-        let bottleButton = document.createElement("button");
+        let bottleUpdateBtn = document.createElement("button");
         let bottleImage = document.createElement("img");
-        let bottleRemove = document.createElement("button");
+        let bottleRemoveBtn = document.createElement("button");
         let bottleVolumeInput = document.createElement("input");
 
-        bottleButton.className = "bottleButton"
+        bottleUpdateBtn.className = "bottleUpdateBtn"
         bottleLabel.className = "bottleLabel";
         bottleName.className = "bottleName";
         bottleVolume.className ="bottleVolume";
         bottleImage.className = "bottleImage";
-        bottleRemove.className = "bottleRemove";
+        bottleRemoveBtn.className = "bottleRemoveBtn";
         bottleVolumeInput.className = "bottleVolumeInput";
 
         bottleName.textContent = item.name;
         bottleVolume.textContent = item.volume;
         bottleLabel.id = item.id;
         bottleImage.src = "https://lh3.googleusercontent.com/hI9mHWFQU9Fr3CnSOW_WeuUZaLM9HFjU63hx3tC0qVRTOboRxwFlFAgJKAGIw5Qei0f10YzB7j-QUUzJJKe4uyJqRqVVzxJaWUxdN1c=w600";
-        bottleButton.textContent = "update"
-        bottleRemove.textContent = "remove"
+        bottleUpdateBtn.textContent = "Update"
+        bottleRemoveBtn.textContent = "Delete"
 
         cabinetBottle.appendChild(bottleImage);
         cabinetBottle.appendChild(bottleLabel);
         bottleLabel.appendChild(bottleName);
         bottleLabel.appendChild(bottleVolume);        
-        bottleLabel.appendChild(bottleRemove);
+        bottleLabel.appendChild(bottleRemoveBtn);
         bottleLabel.appendChild(bottleVolumeInput);
-        bottleLabel.appendChild(bottleButton);
+        bottleLabel.appendChild(bottleUpdateBtn);
 
 
 

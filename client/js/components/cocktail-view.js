@@ -6,8 +6,6 @@
 // view cocktail recipes - calls API
 export const renderCocktailView = () => {
     const page = document.querySelector("#page");
-    console.log("bring me alcohol")
-    
 
     axios.get("api/cocktails")
     .then((response) => {
@@ -36,10 +34,8 @@ export const renderCocktailView = () => {
             recipeDescription.className = "recipeDescription";
             recipeProcedure.className = "recipeProcedure"
 
-
             recipeTitle.className = "recipeTitle";
             selectCocktailBtn.className = "selectCocktailBtn";
-
 
             selectCocktailBtn.textContent = "Select Cocktail"
             recipeTitle.textContent = recipe.name;
@@ -48,18 +44,17 @@ export const renderCocktailView = () => {
             recipeProcedure.textContent = recipe.procedure;
             
             recipePage.append(recipeTitle, recipeDescription,recipeProcedure, selectCocktailBtn);
-            recipeBook.append(recipePage);
-            
+            recipeBook.append(recipePage);            
 
             selectCocktailBtn.addEventListener("click", () => {
-                
-                const cocktailData = cocktailSelect(recipe.id);
-                console.log(cocktailData);
-            });
-
-            
-
-            
+                // 8. Update volumes in cabinet for the chosen recipe and get recipe procedure
+                axios.patch(`/api/cabinet/${recipe.id}`)    
+                    .then((response) => {
+                        console.log(response.data[0].name)
+                        console.log(response.data[0].description)
+                        console.log(response.data[0].procedure)
+                    }).catch(err => page.textContent = 'Something went wrong (cocktailSelect): ' + err.message)
+            })            
                
         });
      
