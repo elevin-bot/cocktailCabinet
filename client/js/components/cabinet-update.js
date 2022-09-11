@@ -1,20 +1,5 @@
-import { renderCabinetView } from "./cabinet-view.js";
-window.renderCabinetView = renderCabinetView;
-
-// 8. Update volumes in cabinet for the chosen recipe
-export const cocktailSelect = (cocktail_id) => {
-    console.log(cocktail_id)
-    axios.patch(`/api/cabinet/${cocktail_id}`)    
-        .then((response) => {
-            console.log(response)
-            // Return cocktail details
-            return response
-        }).catch(err => page.textContent = 'Something went wrong (cocktailSelect): ' + err.message)
-}
-
 // 9a. Add to cabinet
 export const addToCabinetRender = () => {
-    console.log("send me to cabinet render")
     const page = document.querySelector("#page");
     const h3 = document.createElement("h3");
     h3.textContent = 'Add alcohol to your cabinet'
