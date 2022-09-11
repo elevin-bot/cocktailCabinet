@@ -50,7 +50,9 @@ export const renderCabinetView = () => {
         let bottleRemoveBtn = document.createElement("button");
         let bottleVolumeInput = document.createElement("input");
 
+
         bottleUpdateBtn.className = "bottleUpdateBtn";
+
         bottleLabel.className = "bottleLabel";
         bottleName.className = "bottleName";
         bottleVolume.className = "bottleVolume";
@@ -61,18 +63,22 @@ export const renderCabinetView = () => {
         bottleName.textContent = item.name;
         bottleVolume.textContent = item.volume;
         bottleLabel.id = item.id;
+
         bottleImage.src =
           "https://lh3.googleusercontent.com/hI9mHWFQU9Fr3CnSOW_WeuUZaLM9HFjU63hx3tC0qVRTOboRxwFlFAgJKAGIw5Qei0f10YzB7j-QUUzJJKe4uyJqRqVVzxJaWUxdN1c=w600";
         bottleUpdateBtn.textContent = "Update";
         bottleRemoveBtn.textContent = "Delete";
 
+
         cabinetBottle.appendChild(bottleImage);
         cabinetBottle.appendChild(bottleLabel);
         bottleLabel.appendChild(bottleName);
+
         bottleLabel.appendChild(bottleVolume);
         bottleLabel.appendChild(bottleRemoveBtn);
         bottleLabel.appendChild(bottleVolumeInput);
         bottleLabel.appendChild(bottleUpdateBtn);
+
 
         cabinet.appendChild(cabinetBottle);
       });
