@@ -2,84 +2,67 @@ export const renderCabinetView = () => {
   //accessing page
   const page = document.querySelector("#page");
 
-  //creating------------------------
+  //creating-----------------------------------
   const divMain = document.createElement("div");
+  const cabinet = document.createElement("div");
   const buttonSearch = document.createElement("button");
   const buttonAddCabinet = document.createElement("button");
-
   const buttonHeader = document.createElement("div");
-  buttonHeader.id = "buttonHeader";
 
-  //setting----------------------
+  //setting------------------------------------
+  divMain.className = "searchDivMain";
+  cabinet.id = "cabinet";
+  buttonHeader.id = "buttonHeader";
   buttonSearch.id = "buttonSearch";
   buttonSearch.textContent = "Get me drunk";
-
   buttonAddCabinet.id = "buttonAddCabinet";
   buttonAddCabinet.textContent = "Add to cabinet";
 
-  // function
-
+  // Event Listener ----------------------------
   buttonSearch.addEventListener("click", renderCocktailView);
   buttonAddCabinet.addEventListener("click", addToCabinetRender);
 
-  divMain.className = "searchDivMain";
-
-  //appending-----------------------
-  // divMain.appendChild(buttonSearch);
-  // divMain.appendChild  buttonAddCabinet);
-
+  //appending----------------------------------
   buttonHeader.append(buttonSearch, buttonAddCabinet);
-
   divMain.append(buttonHeader);
-  const cabinet = document.createElement("div");
-  cabinet.id = "cabinet";
 
   axios
     .get("api/cabinet")
     .then((response) => {
       const cabinetArray = response.data;
       cabinetArray.forEach((item) => {
-        let cabinetBottle = document.createElement("div");
+        const cabinetBottle = document.createElement("div");
         cabinetBottle.className = "cabinetBottle";
-
-        let bottleName = document.createElement("div");
-        let bottleVolume = document.createElement("div");
-        let bottleLabel = document.createElement("div");
-        let bottleUpdateBtn = document.createElement("button");
-        let bottleImage = document.createElement("img");
-        let bottleRemoveBtn = document.createElement("button");
-        let bottleVolumeInput = document.createElement("input");
-
-
+        //creating
+        const bottleName = document.createElement("div");
+        const bottleVolume = document.createElement("div");
+        const bottleLabel = document.createElement("div");
+        const bottleUpdateBtn = document.createElement("button");
+        const bottleImage = document.createElement("img");
+        const bottleRemoveBtn = document.createElement("button");
+        //setting
         bottleUpdateBtn.className = "bottleUpdateBtn";
-
         bottleLabel.className = "bottleLabel";
         bottleName.className = "bottleName";
         bottleVolume.className = "bottleVolume";
+        bottleVolume.contentEditable = "true";
         bottleImage.className = "bottleImage";
         bottleRemoveBtn.className = "bottleRemoveBtn";
-        bottleVolumeInput.className = "bottleVolumeInput";
-
         bottleName.textContent = item.name;
         bottleVolume.textContent = item.volume;
         bottleLabel.id = item.id;
-
         bottleImage.src =
           "https://lh3.googleusercontent.com/hI9mHWFQU9Fr3CnSOW_WeuUZaLM9HFjU63hx3tC0qVRTOboRxwFlFAgJKAGIw5Qei0f10YzB7j-QUUzJJKe4uyJqRqVVzxJaWUxdN1c=w600";
         bottleUpdateBtn.textContent = "Update";
         bottleRemoveBtn.textContent = "Delete";
-
-
-        cabinetBottle.appendChild(bottleImage);
-        cabinetBottle.appendChild(bottleLabel);
-        bottleLabel.appendChild(bottleName);
-
-        bottleLabel.appendChild(bottleVolume);
-        bottleLabel.appendChild(bottleRemoveBtn);
-        bottleLabel.appendChild(bottleVolumeInput);
-        bottleLabel.appendChild(bottleUpdateBtn);
-
-
+        //appending
+        cabinetBottle.append(bottleImage, bottleLabel);
+        bottleLabel.append(
+          bottleName,
+          bottleVolume,
+          bottleRemoveBtn,
+          bottleUpdateBtn
+        );
         cabinet.appendChild(cabinetBottle);
       });
     })
@@ -90,8 +73,6 @@ export const renderCabinetView = () => {
     );
 
   divMain.appendChild(cabinet);
-
+  // appending page
   page.replaceChildren(divMain);
 };
-
-// appending page
