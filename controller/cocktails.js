@@ -96,8 +96,13 @@ router.put("/api/cabinet", async (req, res) => {
 // 9c. Delete liquor from cabinet
 router.delete("/api/cabinet/:id", async (req, res) => {
   const liquor_id = req.params.id;
-  const dbRes = await db.query("DELETE from cabinet_contents where user_id = $1 and liquor_id = $2", [req.session.user_id, liquor_id])
-  dbRes.json({})
+  try {
+    const dbRes = await db.query("DELETE from cabinet_contents where user_id = $1 and liquor_id = $2", [req.session.user_id, liquor_id])
+    res.json({})
+  }
+  catch(err) {
+    res.status(500).json({})
+  }
 })
 
 // 9d. Delete user cabinet
