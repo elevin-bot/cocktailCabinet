@@ -17,13 +17,27 @@ export const renderCabinetView = () => {
   buttonSearch.textContent = "Get me drunk";
   buttonAddCabinet.id = "buttonAddCabinet";
   buttonAddCabinet.textContent = "Add to cabinet";
+  
+   cabinet.id = "cabinet"
 
   //appending----------------------------------
   buttonHeader.append(buttonSearch, buttonAddCabinet);
   divMain.append(buttonHeader);
-    axios
+
+
+ 
+
+ 
+  
+
+  
+  
+
+
+  axios
     .get("api/cabinet")
     .then((response) => {
+
       const cabinetArray = response.data;
       cabinetArray.forEach((item) => {
         const cabinetBottle = document.createElement("div");

@@ -143,3 +143,7 @@ INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(9, 7, 3
 INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(9, 9, 30);
 INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(9, 10, 5);
 
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(6, 1, 750);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(6, 2, 750);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(6, 6, 750);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(6, 7, 250);

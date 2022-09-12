@@ -13,6 +13,8 @@
   border-radius: 10px;
   padding: 10%;
   transition: 0.7s;
+  height: 60%;
+  width: 60%;
   animation: fadeIn 0.7s;
 }
 .loginDivMain,
@@ -23,6 +25,8 @@
   border-radius: 10px;
   margin: 10%;
   padding: 10%;
+  height: 60%;
+  width: 60%;
   transition: 0.7s;
   animation: fadeIn 0.7s;
 }
@@ -55,11 +59,19 @@
 .cabinetBottle {
   border: 3px solid black;
   border-radius: 5px;
-  height: 12rem;
+  height: 20rem;
   width: fit-content;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 2px;
+  align-content: center;
+  
+}
+.bottleImage {
+  max-height: 15rem;
+  justify-content: center;
+  
 }
 
 .bottleName {
@@ -67,6 +79,8 @@
   font-size: 16;
   font-weight: 600;
   text-transform: uppercase;
+  align-self: center;
+  text-align: center;
 }
 
 .bottleVolume {
@@ -74,18 +88,22 @@
   font-size: 16;
   font-weight: 600;
   text-transform: uppercase;
+  text-align: center;
+  align-self: center;
 }
 
 .bottleButton {
   border: 1px solid red;
-  height: 5px;
+  height: fit-content;
   width: fit-content;
   font-size: 12;
   text-transform: uppercase;
+  align-self: center;
 }
 
 .bottleLabel {
   align-content: bottom;
+  align-self: center;
 }
 
 #divAddForm,
@@ -118,7 +136,6 @@
 }
 
 .recipeBook {
-  z-index: 5;
   border: 3px solid black;
 }
 
@@ -126,6 +143,8 @@
   font: 26;
   font-weight: bold;
 }
+
+
 
 .containerPopup {
   position: absolute;
@@ -135,4 +154,17 @@
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+  position: fixed;
+  /* display: none; */
+  z-index:1;
+  left: 0;
+  top: 0;
+  height:100%;
+  width: 100%;
+  overflow: auto;
+  background: #000 ;
+  opacity:0.2;
 }
