@@ -79,35 +79,6 @@ export const addToCabinetRender = () => {
   });
 };
 
-// 9b. Update cabinet
-export const updateCabinet = (liquor_id, volume) => {
-  const data = { liquor_id, volume };
-  axios
-    .put("/api/cabinet", data)
-    .then((response) => {
-      // Return to parent page (Cabinet list page)
-    })
-    .catch(
-      (err) =>
-        (page.textContent =
-          "Something went wrong (updateCabinet): " + err.message)
-    );
-};
-
-// 9c. Remove from cabinet
-export const removeCabinet = (liquor_id) => {
-  axios
-    .delete(`/api/cabinet/${liquor_id}`)
-    .then((response) => {
-      // Return to parent page (Cabinet list page)
-    })
-    .catch(
-      (err) =>
-        (page.textContent =
-          "Something went wrong (removeCabinet): " + err.message)
-    );
-};
-
 // 9d. Delete cabinet
 export const removeUserCabinet = () => {
   axios

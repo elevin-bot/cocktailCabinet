@@ -84,7 +84,7 @@ router.put("/api/cabinet", async (req, res) => {
   const { liquor_id, volume } = req.body;
 
   try {
-    const sql = "UPDATE cabinet_contents set volume = $3) WHERE user_id = $1 and liquor_id = $2"
+    const sql = "UPDATE cabinet_contents set volume = $3 WHERE user_id = $1 and liquor_id = $2"
     const dbRes = await db.query(sql, [req.session.user_id, liquor_id, volume])
     res.json({})
   }

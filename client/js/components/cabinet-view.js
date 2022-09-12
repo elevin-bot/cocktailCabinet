@@ -21,8 +21,7 @@ export const renderCabinetView = () => {
   //appending----------------------------------
   buttonHeader.append(buttonSearch, buttonAddCabinet);
   divMain.append(buttonHeader);
-
-  axios
+    axios
     .get("api/cabinet")
     .then((response) => {
       const cabinetArray = response.data;
@@ -59,19 +58,34 @@ export const renderCabinetView = () => {
           bottleUpdateBtn
         );
         cabinet.appendChild(cabinetBottle);
-        //Event Listeners for each remove button
+
         bottleRemoveBtn.addEventListener("click", () => {
           const id = bottleLabel.id;
           axios
             .delete(`/api/cabinet/${id}`)
             .then(() => {
-              alert("Liquor deleted");
               renderCabinetView();
             })
             .catch((err) => (page.textContent = err));
         });
+        
         bottleUpdateBtn.addEventListener("click", () => {
-          console.log("bottleUpdateBtn");
+          // Validate volume
+          const volume = bottleVolume.textContent
+          if (!volume || volume == 0 || isNaN(volume)) {
+            bottleVolume.textContent = 'Enter volume'
+            return
+          }
+          const data = { 
+            liquor_id: bottleLabel.id, 
+            volume: bottleVolume.textContent
+           };
+           axios
+            .put("/api/cabinet/", data)
+            .then(() => {
+              // renderCabinetView();
+            })
+            .catch((err) => (page.textContent = err));
         });
       });
     })
