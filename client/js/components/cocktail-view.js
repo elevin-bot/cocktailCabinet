@@ -13,7 +13,7 @@ export const renderCocktailView = () => {
       const containerPopup = document.createElement("div");
       const recipeBook = document.createElement("div");
       const returnButton = document.createElement("button");
-      const recipeBookModal = document.createElement("div")
+      const recipeBookModal = document.createElement("div");
 
       //setting-------------------------------------
       containerPopup.className = "containerPopup";
@@ -23,8 +23,8 @@ export const renderCocktailView = () => {
       recipeBookModal.className = "modal";
 
       //appending-------------------------------------
-      recipeBookModal.append(returnButton, recipeBook)
-      
+      recipeBookModal.append(returnButton, recipeBook);
+
       //for each recipe
       recipeArray.forEach((recipe) => {
         //creating
@@ -40,10 +40,16 @@ export const renderCocktailView = () => {
         recipeTitle.className = "recipeTitle";
         selectCocktailBtn.className = "selectCocktailBtn";
         selectCocktailBtn.textContent = "Select Cocktail";
-        recipeTitle.textContent = recipe.name;
         recipeTitle.id = recipe.id;
-        recipeDescription.textContent = recipe.description;
-        recipeProcedure.textContent = recipe.procedure;
+        recipeTitle.innerHTML = recipe.name;
+        recipeDescription.innerHTML = recipe.description;
+        recipeProcedure.innerHTML = recipe.procedure;
+        recipeDescription.classList.add("hidden");
+        recipeProcedure.classList.add("hidden");
+        selectCocktailBtn.classList.add("hidden");
+        selectCocktailBtn.title =
+          "If you select this cocktail your cabinet will be updated";
+
         //appending
         recipePage.append(
           recipeTitle,
@@ -52,15 +58,30 @@ export const renderCocktailView = () => {
           selectCocktailBtn
         );
         recipeBook.append(recipePage);
+
         //Event listener - each recipe
+        recipeTitle.addEventListener("click", () => {
+          recipeDescription.classList.toggle("hidden");
+          recipeProcedure.classList.toggle("hidden");
+          selectCocktailBtn.classList.toggle("hidden");
+        });
         selectCocktailBtn.addEventListener("click", () => {
           // 8. Update volumes in cabinet for the chosen recipe and get recipe procedure
           axios
             .patch(`/api/cabinet/${recipe.id}`)
             .then((response) => {
-              console.log(response.data[0].name);
-              console.log(response.data[0].description);
-              console.log(response.data[0].procedure);
+              recipePage.replaceChildren(
+                "All volumes in your cabinet have been updated, ",
+                "\n",
+                "Enjoy your ",
+                recipeTitle
+              );
+              recipeBook.replaceChildren(recipePage);
+
+              const myTimeout = setTimeout(() => {
+                recipeBook.remove();
+                containerPopup.remove();
+              }, 4000);
             })
             .catch(
               (err) =>
