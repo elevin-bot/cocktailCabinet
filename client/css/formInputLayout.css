@@ -1,0 +1,28 @@
+.divLayoutInput {
+  position: relative;
+  margin: 10px;
+}
+.inputLayout {
+  border-radius: 5px;
+  height: 30px;
+  padding: 10px;
+  width: 100%;
+}
+.inputLayout:focus {
+  outline-color: #278aa9;
+}
+.inputLayout:not(:placeholder-shown) + .labelLayout {
+  background: #fff;
+  transform: translate(0, -50%);
+  opacity: 1;
+}
+.labelLayout {
+  /* Position the label */
+  left: 8px;
+  position: absolute;
+  top: 0;
+
+  /* Hide it by default */
+  opacity: 0;
+  transition: all 200ms;
+}

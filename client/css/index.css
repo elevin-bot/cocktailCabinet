@@ -14,9 +14,27 @@ button:hover {
   border-left-color: #3ed2ff7e;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+form {
+  max-width: 300px;
+}
+
 .error {
   color: red;
 }
 .hidden {
   display: none;
+}
+
+/* -------------------- KEY FRAMES ---------------------*/
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -11,6 +11,24 @@ export const renderSignup = () => {
   const divLeft = document.createElement("div");
   const form = document.createElement("form");
   const h3 = document.createElement("h3");
+  //
+  //
+  //
+
+  // vvvvvvvvv  Input Layout vvvvvvvvvvvvvv
+  const divLayoutInputName = document.createElement("div");
+  const labelName = document.createElement("label");
+  const divLayoutInputEmail = document.createElement("div");
+  const labelEmail = document.createElement("label");
+  const divLayoutInputPassword = document.createElement("div");
+  const labelPassword = document.createElement("label");
+  const divLayoutInputPasswordCheck = document.createElement("div");
+  const labelPasswordCheck = document.createElement("label");
+  // ^^^^^^^^^^ Input Layout ^^^^^^^^^^^^
+
+  //
+  //
+  //
   const inputName = document.createElement("input");
   const inputEmail = document.createElement("input");
   const inputPassword = document.createElement("input");
@@ -30,6 +48,37 @@ export const renderSignup = () => {
   divLeft.className = "signUpDivLeft";
   form.name = "form";
   h3.textContent = "Sign up to get your cabinet";
+
+  //
+  //
+  //
+  //
+
+  // vvvvvvvvv  Input Layout vvvvvvvvvvvvvv
+  divLayoutInputName.className = "divLayoutInput";
+  inputName.className = "inputLayout";
+  labelName.className = "labelLayout";
+  labelName.textContent = "Name";
+
+  divLayoutInputEmail.className = "divLayoutInput";
+  inputEmail.className = "inputLayout";
+  labelEmail.className = "labelLayout";
+  labelEmail.textContent = "Email";
+
+  divLayoutInputPassword.className = "divLayoutInput";
+  inputPassword.className = "inputLayout";
+  labelPassword.className = "labelLayout";
+  labelPassword.textContent = "Password";
+
+  divLayoutInputPasswordCheck.className = "divLayoutInput";
+  inputPasswordCheck.className = "inputLayout";
+  labelPasswordCheck.className = "labelLayout";
+  labelPasswordCheck.textContent = "Password";
+  // ^^^^^^^^^^ Input Layout ^^^^^^^^^^^^
+  //
+  //
+  //
+
   inputName.placeholder = "Enter your name";
   inputName.name = "name";
   inputEmail.placeholder = "Email Address";
@@ -37,7 +86,7 @@ export const renderSignup = () => {
   inputPassword.placeholder = "Password";
   inputPassword.name = "password";
   inputPassword.type = "password";
-  inputPasswordCheck.placeholder = "Enter your password again";
+  inputPasswordCheck.placeholder = "Reenter password";
   inputPasswordCheck.name = "passwordCheck";
   inputPasswordCheck.type = "password";
   buttonGetCabinet.name = "buttonGetCabinet";
@@ -53,16 +102,38 @@ export const renderSignup = () => {
   //appending-----------------------
 
   // appending divLeft
-  divLeft.appendChild(h3);
+
+  //
+  //
+  //
+  // vvvvvvvvv  Input Layout vvvvvvvvvvvvvv
+
+  divLayoutInputName.append(inputName, labelName);
+  divLayoutInputEmail.append(inputEmail, labelEmail);
+  divLayoutInputPassword.append(inputPassword, labelPassword);
+  divLayoutInputPasswordCheck.append(inputPasswordCheck, labelPasswordCheck);
+
   form.append(
-    inputName,
-    inputEmail,
-    inputPassword,
-    inputPasswordCheck,
+    divLayoutInputName,
+    divLayoutInputEmail,
+    divLayoutInputPassword,
+    divLayoutInputPasswordCheck,
     buttonGetCabinet
   );
-  divLeft.appendChild(form);
-  divLeft.appendChild(spanError);
+  // ^^^^^^^^^^ Input Layout ^^^^^^^^^^^^
+  //
+  //
+  //
+
+  // form.append(
+  //   inputName,
+  //   inputEmail,
+  //   inputPassword,
+  //   inputPasswordCheck,
+  //   buttonGetCabinet
+  // );
+
+  divLeft.append(h3, form, spanError);
 
   // appending divRight
   divRight.append(p, buttonUnlock);
@@ -100,16 +171,10 @@ export const renderSignup = () => {
   });
 
   //validating NAME
-  inputName.addEventListener("focusout", () => {
-    validateForm();
-  });
   inputName.addEventListener("input", () => {
     validateForm();
   });
   //validating EMAIL - using class ValidateEmail()
-  inputEmail.addEventListener("focusout", () => {
-    validateForm();
-  });
   inputEmail.addEventListener("input", () => {
     validateForm();
   });

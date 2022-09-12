@@ -16,7 +16,7 @@
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "pg": "^8.8.0",
-    "require": "^2.4.20"
+    "require": "^0.4.4"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.17.1",

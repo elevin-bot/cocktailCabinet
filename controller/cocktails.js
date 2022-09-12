@@ -22,7 +22,6 @@ router.get("/api/cabinet", async (req, res) => {
                order by l.name
               `
   const result = await db.query(sql, [req.session.user_id])
-  console.log(result.rows)                    
   res.json(result.rows)
 });
 
@@ -38,7 +37,6 @@ router.get("/api/cocktails", async (req, res) => {
                   )`
 
   const result = await db.query(sql, [req.session.user_id])
-  console.log(result.rows)                    
   res.json(result.rows)
 });
 
@@ -58,6 +56,7 @@ router.patch("/api/cabinet/:id", async (req, res) => {
 
     // Delete bottles if volume zero or less
     dbRes = await db.query("DELETE FROM cabinet_contents WHERE user_id = $1 AND volume <= 0;", [req.session.user_id])
+    // Return recipe procedure
     dbRes = await db.query("select name, description, procedure from cocktail where id=$1;", [cocktail_id])
     res.json(dbRes.rows)
   }
@@ -120,7 +119,6 @@ router.post("/api/cocktail", async (req, res) => {
   try {
     const sql = "INSERT INTO cocktail(name, description, procedure) VALUES($1, $2, $3) RETURNING id"
     const dbRes = await db.query(sql, [name, description, procedure])
-    console.log(dbRes.id)
     const cocktail_id = dbRes.id
     
     // Insert cocktail Ingredients
