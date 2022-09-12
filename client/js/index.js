@@ -5,8 +5,6 @@ import { renderLogin } from "./components/login.js";
 import { renderSignupLoader } from "./components/signup-loader.js";
 import { renderLogOut } from "./components/logout.js";
 import { addToCabinetRender } from "./components/cabinet-update.js";
-import { updateCabinet } from "./components/cabinet-update.js";
-import { removeCabinet } from "./components/cabinet-update.js";
 import { removeUserCabinet } from "./components/cabinet-update.js";
 import { renderCocktailView } from "./components/cocktail-view.js";
 
@@ -23,8 +21,6 @@ window.renderLogin = renderLogin;
 window.renderCabinetView = renderCabinetView;
 window.renderLogOut = renderLogOut;
 window.addToCabinetRender = addToCabinetRender;
-window.updateCabinet = updateCabinet;
-window.removeCabinet = removeCabinet;
 window.removeUserCabinet = removeUserCabinet;
 window.renderCocktailView = renderCocktailView;
 
