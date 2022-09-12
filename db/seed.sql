@@ -10,15 +10,15 @@ INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(1, 7, 250);
 
 
 
--- Mojito \n
+-- Mojito </br>
 INSERT INTO cocktail(name,description,procedure) 
 VALUES('Mojito', 
-E'60ml White Rum \n
- Juice of 1 Lime \n 1 Tsp granulated sugar \n Mint Leaves \n Soda water ',
-E'STEP 1 \n
-Muddle the lime juice, sugar and mint leaves in a small jug, crushing the mint as you go. Pour into a tall glass and add a handful of ice. \n \n
+E'60ml White Rum </br>
+ Juice of 1 Lime </br> 1 Tsp granulated sugar </br> Mint Leaves </br> Soda water ',
+E'STEP 1 </br>
+Muddle the lime juice, sugar and mint leaves in a small jug, crushing the mint as you go. Pour into a tall glass and add a handful of ice. </br> </br>
 
-STEP 2 \n
+STEP 2 </br>
 Pour over the rum, stirring with a long-handled spoon. Top up with soda water, garnish with mint and serve.');
 
 INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(1, 4, 60);
@@ -26,9 +26,9 @@ INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(1, 4, 6
 -- Tom Collins
 INSERT INTO cocktail(name,description,procedure) 
 VALUES('Tom Collins', 
-E'50ml Gin \n
- 25ml lemon juice \n 25ml sugar syrup \n  125ml chilled soda water',
-E'STEP 1 \n
+E'50ml Gin </br>
+ 25ml lemon juice </br> 25ml sugar syrup </br>  125ml chilled soda water',
+E'STEP 1 </br>
 Build the drink over plenty of ice in a Collins glass, stir gently and garnish with a slice of lemon.');
 
 INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(2, 6, 50);
@@ -36,13 +36,13 @@ INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(2, 6, 5
 -- Sex on the beach
 INSERT INTO cocktail(name,description,procedure) 
 VALUES('Sex on the Beach', 
-E'50ml Vodka \n
- 2 oranges juiced \n 50ml cranberry juice \n  25ml peach schnapps \n ice' ,
-E'STEP 1 \n
+E'50ml Vodka </br>
+ 2 oranges juiced </br> 50ml cranberry juice </br>  25ml peach schnapps </br> ice' ,
+E'STEP 1 </br>
 Fill two tall glasses with ice cubes. Pour the vodka, peach schnapps and fruit juices into a large jug and stir. 
-\n \n
+</br> </br>
 
-STEP 2 \n
+STEP 2 </br>
 Divide the mixture between the two glasses and stir gently to combine. Additionally garnish with the cocktail cherries and orange slices.');
 
 INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(3, 1, 50);
@@ -50,9 +50,9 @@ INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(3, 1, 5
 -- Piña colada
 INSERT INTO cocktail(name,description,procedure) 
 VALUES('Pina colada', 
-E'60ml White Rum \n
- 60ml coconut cream \n 120 ml pineapple juice \n ice' ,
-E'STEP 1 \n
+E'60ml White Rum </br>
+ 60ml coconut cream </br> 120 ml pineapple juice </br> ice' ,
+E'STEP 1 </br>
 Pulse all the ingredients along with a handful of ice in a blender until smooth. Pour into a tall glass and garnish as you like. 
 ');
 
@@ -61,9 +61,9 @@ INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(4, 4, 6
 -- Special Lemon Lime Bitters
 INSERT INTO cocktail(name,description,procedure) 
 VALUES('Special Lemon Lime Bitters', 
-E'60ml Gin \n
- 60ml Lime Juice \n 120 ml Tonic Water \n A dash of angostura bitters' ,
-E'STEP 1 \n
+E'60ml Gin </br>
+ 60ml Lime Juice </br> 120 ml Tonic Water </br> A dash of angostura bitters' ,
+E'STEP 1 </br>
 Pulse all the ingredients along with a handful of ice in a blender until smooth. Pour into a tall glass and garnish as you like. 
 ');
 
@@ -72,12 +72,12 @@ INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(5, 4, 6
 -- Ge Special
 INSERT INTO cocktail(name,description,procedure) 
 VALUES('Ge Special', 
-E'60ml Vodka \n 60ml Tequila \n 120 ml Gin \n 150ml Redbull \n ice' ,
-E'STEP 1 \n
+E'60ml Vodka </br> 60ml Tequila </br> 120 ml Gin </br> 150ml Redbull </br> ice' ,
+E'STEP 1 </br>
 Pulse all the ingredients along with a handful of ice in a blender until smooth. Pour into a tall glass and pray.
-\n \n
+</br> </br>
 
-STEP 2 \n
+STEP 2 </br>
 Pour RedBull over the top, and add ice. Enjoy and garnish as desired.
 ');
 
@@ -88,16 +88,16 @@ INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(6, 2, 6
 -- Zombie Cocktail
 INSERT INTO cocktail(name,description,procedure) 
 VALUES('Zombie Cocktail', 
-E'25ml Dark Rum \n 
-25ml White Rum \n 50ml Lime Juice \n 150ml Pineapple Juice \n ice' ,
-E'STEP 1\n
+E'25ml Dark Rum </br> 
+25ml White Rum </br> 50ml Lime Juice </br> 150ml Pineapple Juice </br> ice' ,
+E'STEP 1</br>
 Pour the rums and fruit juices into a cocktail shaker filled with ice and shake hard until the outside of the shaker feels really cold.
-\n \n
-STEP 2 \n
+</br> </br>
+STEP 2 </br>
 Strain the mixture into a tall glass or hurricane glass filled with ice, then slowly pour in the grenadine to colour the drink.
-\n \n
+</br> </br>
 
-STEP 3 \n
+STEP 3 </br>
 Skewer the orange wedge and cherries on a cocktail stick. Garnish the drink with mint sprigs and the skewered fruit.
 ');
 
@@ -107,17 +107,17 @@ INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(7, 5, 2
 -- Long Island Iced Tea
 INSERT INTO cocktail(name,description,procedure) 
 VALUES('Long Island Iced Tea', 
-E'50ml Vodka \n 
-50ml Gin \n 50ml Tequila \n 50ml White Rum \n 50ml Triple Sec \n Ice \n 50ml Lime Juice\ 500ml cola' ,
-E'STEP 1\n
+E'50ml Vodka </br> 
+50ml Gin </br> 50ml Tequila </br> 50ml White Rum </br> 50ml Triple Sec </br> Ice </br> 50ml Lime Juice\ 500ml cola' ,
+E'STEP 1</br>
 Pour the vodka, gin, tequila, rum and triple sec into a large (1.5l) jug, and add lime juice to taste. Half fill the jug with ice, then stir until the outside feels cold.
-\n \n
+</br> </br>
 
-STEP 2\n
+STEP 2</br>
 Add the cola then stir to combine. Drop in the lime wedges.
 
-\n \n
-STEP 3 \n
+</br> </br>
+STEP 3 </br>
 Fill 4 tall glasses with more ice cubes and pour in the iced tea.
 ');
 
@@ -130,12 +130,12 @@ INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(8, 8, 5
 -- Corpse Reviver No 3
 INSERT INTO cocktail(name,description,procedure) 
 VALUES('Corpse Reviver No 3', 
-E'30ml Gin \n 
-30ml Lemon Juice \n 30ml Cointreau \n 30ml Vermouth \n 5ml Absinthe ' ,
-E'STEP 1 \n
+E'30ml Gin </br> 
+30ml Lemon Juice </br> 30ml Cointreau </br> 30ml Vermouth </br> 5ml Absinthe ' ,
+E'STEP 1 </br>
 Add the gin, lemon juice, Cointreau, dry vermouth, and absinthe to a cocktail shaker. Fill it with ice and shake it until cold.
-\n \n
-STEP 2 \n
+</br> </br>
+STEP 2 </br>
 Strain into a cocktail glass. If desired, garnish with an orange peel or orange wedge. 
 ');
 
@@ -143,7 +143,7 @@ INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(9, 7, 3
 INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(9, 9, 30);
 INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(9, 10, 5);
 
-INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(6, 1, 750);
-INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(6, 2, 750);
-INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(6, 6, 750);
-INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(6, 7, 250);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 1, 750);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 2, 750);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 6, 750);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 7, 250);

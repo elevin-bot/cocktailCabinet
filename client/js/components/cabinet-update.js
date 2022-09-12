@@ -66,6 +66,8 @@ export const addToCabinetRender = () => {
           (page.textContent =
             "Something went wrong (addToCabinetRender): " + err.message)
       );
+        containerPopup.remove();
+        divMain.remove();
   });
   //cancel popup
   cancelBtn.addEventListener("click", () => {
