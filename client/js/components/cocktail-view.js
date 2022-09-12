@@ -12,14 +12,17 @@ export const renderCocktailView = () => {
       //creating -------------------------------------
       const recipeBook = document.createElement("div");
       const returnButton = document.createElement("button");
+      const recipeBookModal = document.createElement("div")
 
       //setting-------------------------------------
       recipeBook.className = "recipeBook";
       returnButton.className = "returnButton";
       returnButton.textContent = "Cancel";
+      recipeBookModal.className = "modal";
 
       //appending-------------------------------------
-      recipeBook.append(returnButton);
+      recipeBookModal.append(returnButton, recipeBook)
+      
       //for each recipe
       recipeArray.forEach((recipe) => {
         //creating

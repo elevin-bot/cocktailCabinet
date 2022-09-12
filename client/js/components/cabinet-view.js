@@ -26,13 +26,12 @@ export const renderCabinetView = () => {
   buttonHeader.append(buttonSearch, buttonAddCabinet);
   divMain.append(buttonHeader);
 
-  const cabinetModal = document.createElement("div")
-  cabinetModal.class = "modal"
-  const cabinet = document.createElement("div")
+ 
+
   cabinet.id = "cabinet"
-  cabinet.class = "modal"
+  
 
-
+  
   
 
 
