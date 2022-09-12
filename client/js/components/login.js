@@ -17,20 +17,10 @@ export const renderLogin = () => {
   const divRight = document.createElement("div");
   const p = document.createElement("p");
   const buttonSignup = document.createElement("button");
-  //
-  //
-  //
-  // vvvvvvvvv  Input Layout vvvvvvvvvvvvvv
-
   const divLayoutInputEmail = document.createElement("div");
   const labelEmail = document.createElement("label");
   const divLayoutInputPassword = document.createElement("div");
   const labelPassword = document.createElement("label");
-
-  // ^^^^^^^^^^ Input Layout ^^^^^^^^^^^^
-  //
-  //
-  //
 
   //setting----------------------
 
@@ -49,50 +39,25 @@ export const renderLogin = () => {
   divRight.className = "loginDivRight";
   p.textContent = "Don't have a cabinet? Sign up now";
   buttonSignup.textContent = "Sign Up";
-
-  //
-  //
-  //
-  //
-  // vvvvvvvvv  Input Layout vvvvvvvvvvvvvv
-
   divLayoutInputEmail.className = "divLayoutInput";
   inputEmail.className = "inputLayout";
   labelEmail.className = "labelLayout";
   labelEmail.textContent = "Email";
-
   divLayoutInputPassword.className = "divLayoutInput";
   inputPassword.className = "inputLayout";
   labelPassword.className = "labelLayout";
   labelPassword.textContent = "Password";
 
-  // ^^^^^^^^^^ Input Layout ^^^^^^^^^^^^
-  //
-  //
-  //
-
   //appending-----------------------
-
-  // appending divLeft
-
-  //
-  //
-  //
-  // vvvvvvvvv  Input Layout vvvvvvvvvvvvvv
 
   divLayoutInputEmail.append(inputEmail, labelEmail);
   divLayoutInputPassword.append(inputPassword, labelPassword);
   form.append(divLayoutInputEmail, divLayoutInputPassword, buttonUnlockCabinet);
-  // ^^^^^^^^^^ Input Layout ^^^^^^^^^^^^
-  //
-  //
-  //
-  // form.append(inputEmail, inputPassword, buttonUnlockCabinet);
 
+  // appending divLeft
   divLeft.append(h3, form);
   // appending divRight
   divRight.append(p, buttonSignup);
-
   // appending main div
   divMain.append(divLeft, divRight);
   // appending page
@@ -113,7 +78,6 @@ export const renderLogin = () => {
     axios
       .post("/api/session", data)
       .then((response) => {
-        console.log(response);
         renderCabinetView();
         renderHeader();
       })

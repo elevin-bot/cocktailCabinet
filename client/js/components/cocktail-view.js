@@ -10,11 +10,13 @@ export const renderCocktailView = () => {
       const recipeArray = response.data;
 
       //creating -------------------------------------
+      const containerPopup = document.createElement("div");
       const recipeBook = document.createElement("div");
       const returnButton = document.createElement("button");
       const recipeBookModal = document.createElement("div")
 
       //setting-------------------------------------
+      containerPopup.className = "containerPopup";
       recipeBook.className = "recipeBook";
       returnButton.className = "returnButton";
       returnButton.textContent = "Cancel";
@@ -50,7 +52,7 @@ export const renderCocktailView = () => {
           selectCocktailBtn
         );
         recipeBook.append(recipePage);
-        //Event listener
+        //Event listener - each recipe
         selectCocktailBtn.addEventListener("click", () => {
           // 8. Update volumes in cabinet for the chosen recipe and get recipe procedure
           axios
@@ -69,10 +71,19 @@ export const renderCocktailView = () => {
       });
 
       //appending to page
-      page.append(recipeBook);
-      //Event listener
+      document.body.append(containerPopup);
+      document.body.append(recipeBook);
+
+      //Event listener - for divMain -----------
+      //cancel popup
       returnButton.addEventListener("click", () => {
-        returnButton.parentElement.remove();
+        recipeBook.remove();
+        containerPopup.remove();
+      });
+      //cancel popup clicking on black screen
+      containerPopup.addEventListener("click", () => {
+        recipeBook.remove();
+        containerPopup.remove();
       });
     })
     .catch(
