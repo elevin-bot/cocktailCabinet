@@ -13,15 +13,18 @@ export const renderCocktailView = () => {
       const containerPopup = document.createElement("div");
       const recipeBook = document.createElement("div");
       const returnButton = document.createElement("button");
+      const recipeBookModal = document.createElement("div")
 
       //setting-------------------------------------
       containerPopup.className = "containerPopup";
       recipeBook.className = "recipeBook";
       returnButton.className = "returnButton";
       returnButton.textContent = "Cancel";
+      recipeBookModal.className = "modal";
 
       //appending-------------------------------------
-      recipeBook.append(returnButton);
+      recipeBookModal.append(returnButton, recipeBook)
+      
       //for each recipe
       recipeArray.forEach((recipe) => {
         //creating
