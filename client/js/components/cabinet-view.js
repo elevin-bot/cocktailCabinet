@@ -35,9 +35,14 @@ export const renderCabinetView = () => {
   
 
   divMain.append(buttonHeader);
+  const cabinetModal = document.createElement("div")
+  cabinetModal.class = "modal"
   const cabinet = document.createElement("div")
   cabinet.id = "cabinet"
+  cabinet.class = "modal"
 
+
+  
   axios.get("api/cabinet")
   .then((response) => {
       const cabinetArray = response.data;
