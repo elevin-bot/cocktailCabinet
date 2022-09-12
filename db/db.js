@@ -1,7 +1,7 @@
 const pg = require("pg");
 
 const db = new pg.Pool({
-  database: "cocktail_cabinet",
+  connectionString: process.env.DATABASE_URL || "cocktail_cabinet"
 });
 
 module.exports = db;
