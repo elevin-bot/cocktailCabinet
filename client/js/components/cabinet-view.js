@@ -18,10 +18,6 @@ export const renderCabinetView = () => {
   buttonAddCabinet.id = "buttonAddCabinet";
   buttonAddCabinet.textContent = "Add to cabinet";
 
-  // Event Listener ----------------------------
-  buttonSearch.addEventListener("click", renderCocktailView);
-  buttonAddCabinet.addEventListener("click", addToCabinetRender);
-
   //appending----------------------------------
   buttonHeader.append(buttonSearch, buttonAddCabinet);
   divMain.append(buttonHeader);
@@ -53,8 +49,8 @@ export const renderCabinetView = () => {
         bottleLabel.id = item.id;
         bottleImage.src =
           "https://lh3.googleusercontent.com/hI9mHWFQU9Fr3CnSOW_WeuUZaLM9HFjU63hx3tC0qVRTOboRxwFlFAgJKAGIw5Qei0f10YzB7j-QUUzJJKe4uyJqRqVVzxJaWUxdN1c=w600";
-        bottleUpdateBtn.textContent = "Update";
-        bottleRemoveBtn.textContent = "Delete";
+        bottleUpdateBtn.textContent = "Update Volume";
+        bottleRemoveBtn.textContent = "Remove";
         //appending
         cabinetBottle.append(bottleImage, bottleLabel);
         bottleLabel.append(
@@ -64,6 +60,20 @@ export const renderCabinetView = () => {
           bottleUpdateBtn
         );
         cabinet.appendChild(cabinetBottle);
+        //Event Listeners for each remove button
+        bottleRemoveBtn.addEventListener("click", () => {
+          const id = bottleLabel.id;
+          axios
+            .delete(`/api/cabinet/${id}`)
+            .then(() => {
+              alert("Liquor deleted");
+              renderCabinetView();
+            })
+            .catch((err) => (page.textContent = err));
+        });
+        bottleUpdateBtn.addEventListener("click", () => {
+          console.log("bottleUpdateBtn");
+        });
       });
     })
     .catch(
@@ -75,4 +85,8 @@ export const renderCabinetView = () => {
   divMain.appendChild(cabinet);
   // appending page
   page.replaceChildren(divMain);
+
+  // Event Listener ----------------------------
+  buttonSearch.addEventListener("click", renderCocktailView);
+  buttonAddCabinet.addEventListener("click", addToCabinetRender);
 };

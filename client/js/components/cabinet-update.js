@@ -1,6 +1,8 @@
 // 9a. Add to cabinet
 export const addToCabinetRender = () => {
   const page = document.querySelector("#page");
+  const containerPopup = document.createElement("div");
+  containerPopup.className = "containerPopup";
   const divMain = document.createElement("div");
   divMain.id = "divAddForm";
   const h3 = document.createElement("h3");
@@ -9,6 +11,22 @@ export const addToCabinetRender = () => {
   addForm.id = "addForm";
   const select = document.createElement("select");
   select.id = "selectAlcohol";
+
+  const cancelBtn = document.createElement("button");
+  cancelBtn.id = "cancel";
+  cancelBtn.textContent = "Cancel";
+  const addBtn = document.createElement("button");
+  addBtn.id = "Add";
+  addBtn.textContent = "Add";
+  const inputVolume = document.createElement("input");
+  inputVolume.placeholder = "Bottle volume";
+  inputVolume.setAttribute("required", "");
+  addForm.append(h3, select, inputVolume, addBtn);
+  //   const checkFormExists = document.querySelector();
+  divMain.append(addForm, cancelBtn);
+
+  document.body.append(containerPopup);
+  document.body.append(divMain);
 
   // 5. Populate select (drop dpown) with liquor list
   axios
@@ -27,25 +45,7 @@ export const addToCabinetRender = () => {
         (page.textContent = "Something went wrong (liquorList): " + err.message)
     );
 
-  const cancelBtn = document.createElement("button");
-  cancelBtn.id = "cancel";
-  cancelBtn.textContent = "Cancel";
-  const addBtn = document.createElement("button");
-  addBtn.id = "Add";
-  addBtn.textContent = "Add";
-  const inputVolume = document.createElement("input");
-  inputVolume.placeholder = "Bottle volume";
-  inputVolume.setAttribute("required", "");
-  addForm.append(h3, select, inputVolume, addBtn);
-  //   const checkFormExists = document.querySelector();
-  divMain.append(addForm, cancelBtn);
-  page.append(divMain);
-
   //Event Listener
-  cancelBtn.addEventListener("click", () => {
-    cancelBtn.parentElement.remove();
-  });
-
   addForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = {
@@ -66,6 +66,16 @@ export const addToCabinetRender = () => {
           (page.textContent =
             "Something went wrong (addToCabinetRender): " + err.message)
       );
+  });
+  //cancel popup
+  cancelBtn.addEventListener("click", () => {
+    containerPopup.remove();
+    divMain.remove();
+  });
+  //cancel popup clicking on black screen
+  containerPopup.addEventListener("click", () => {
+    containerPopup.remove();
+    divMain.remove();
   });
 };
 
