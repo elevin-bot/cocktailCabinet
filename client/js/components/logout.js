@@ -9,6 +9,7 @@ export const renderLogOut = () => {
   const buttonCancel = document.createElement("button");
 
   //setting-------------------------------
+  divMain.className = "logOutReconfirm";
   p.textContent = "Are you sure you want to logout?";
   buttonYes.textContent = "Yes";
   buttonCancel.textContent = "Cancel";
@@ -17,22 +18,20 @@ export const renderLogOut = () => {
   divMain.append(p, buttonYes, buttonCancel);
 
   // appending page
-  page.replaceChildren(divMain);
+  page.append(divMain);
 
   // Event Listeners -----------------------
   buttonYes.addEventListener("click", () => {
     axios
       .delete("/api/session")
       .then((response) => {
-        // ############ IMPORTANT #############
-        location = "/"; // has to be changed after pop pup function is working
+        location = "/";
       })
       .catch((err) => {
         alert(err);
       });
   });
   buttonCancel.addEventListener("click", () => {
-    // ############ IMPORTANT #############
-    renderCabinetView(); // has to be changed after pop pup function is working
+    buttonCancel.parentElement.remove();
   });
 };

@@ -6,17 +6,17 @@
   gap: 10px;
 }
 
-.signUpDivMain,
-
 .searchDivMain {
-
-  
-  width: 80%;
-  
-  border: 10px black;
-
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  padding: 10%;
+  transition: 0.7s;
+  animation: fadeIn 0.7s;
 }
-.loginDivMain {
+.loginDivMain,
+.signUpDivMain {
   display: flex;
   gap: 10%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -24,6 +24,7 @@
   margin: 10%;
   padding: 10%;
   transition: 0.7s;
+  animation: fadeIn 0.7s;
 }
 .signUpDivMain:hover,
 .searchDivMain:hover,
@@ -31,6 +32,7 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
+
 .signUpDivLeft,
 .loginDivLeft,
 .signUpDivRight,
@@ -48,10 +50,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  
 }
-
-
 
 .cabinetBottle {
   border: 3px solid black;
@@ -89,23 +88,27 @@
   align-content: bottom;
 }
 
-#addForm {
-  align-self: center;
+#divAddForm,
+.logOutReconfirm {
+  position: absolute;
   z-index: 2;
-  background-color: red;
-  border: 20px;
+  top: 30%;
+  left: 30%;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
   padding: 20px;
+  animation: fadeIn 0.7s;
 }
 
 .selectCocktailBtn {
   background-color: pink;
 }
 
-
-.recipeBook{
+.recipeBook {
   z-index: 5;
   border: 3px solid black;
-};
+}
 
 .recipeTitle {
   font: 26;
