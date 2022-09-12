@@ -1,9 +1,39 @@
+body {
+  height: 100%;
+  justify-content: center;
+}
+
+#header-nav {
+  justify-content: center;
+  min-height: 5rem;
+  background-color:pink;
+}
+
 #page {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 5%;
   gap: 10px;
+  
+  
+}
+
+/* header */
+
+#h1header {
+  align-self: left;
+  justify-content: space-between;
+}
+
+#logOutButton {
+  position: absolute;
+  left: 10%;
+  background-color: blue;
+}
+
+#h1AfterLogin {
+  position: absolute;
 }
 
 .searchDivMain {
@@ -46,15 +76,7 @@
   width: 100%;
 }
 
-#buttonHeader {
-  display: flex;
-}
-
-#cabinet {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
+/* CABINET VIEW */
 
 .cabinetBottle {
   border: 3px solid black;
@@ -63,18 +85,25 @@
   width: fit-content;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   margin: 2px;
   align-content: center;
+  align-self: center;
 }
+
 .bottleImage {
   max-height: 15rem;
   justify-content: center;
+
+  flex-wrap: wrap;
+  display:flex;
+
 }
 
 .bottleName {
-  border: 2px solid black;
-  font-size: 16;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 20;
   font-weight: 600;
   text-transform: uppercase;
   align-self: center;
@@ -82,9 +111,9 @@
 }
 
 .bottleVolume {
-  border: 2px solid black;
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-size: 16;
-  font-weight: 600;
   text-transform: uppercase;
   text-align: center;
   align-self: center;
@@ -104,49 +133,85 @@
   align-self: center;
 }
 
+
 #divAddForm,
 .logOutReconfirm {
   position: absolute;
-  z-index: 5;
+  z-index: 1;
   top: 30%;
   left: 30%;
   background-color: white;
   border: 2px solid black;
   border-radius: 10px;
   padding: 20px;
-  animation: fadeIn 0.7s;
+  animation: fadeIn 0.4s;
+  align-content: center;
 }
+
 .recipeBook {
-  position: absolute;
-  z-index: 5;
-  top: 10%;
-  left: 10%;
-  right: 10%;
+  position: fixed;
+  z-index: 1;
+  top: 25%;
+  left: 25%;
+  right: 25%;
+  float: left;
   background-color: white;
   border: 2px solid black;
   border-radius: 10px;
   padding: 20px;
-  animation: fadeIn 0.7s;
+  animation: fadeIn 0.4s;
+  width: 40%;
+  overflow: auto;
+  max-width: 600px;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.recipePage {
+  padding: top 50px;
+  padding: bottom 20px;
+  border: 20px;
+  
+  
 }
 
 .selectCocktailBtn {
   background-color: pink;
+  padding: 20px;
+  align-self: center;
 }
 
 .recipeBook {
   border: 3px solid black;
+  align-self: center;
+  overflow-y: auto;
+  height: 40%;
 }
 
 .recipeTitle {
-  font-size: 30px;
-  font: 26;
   font-weight: bold;
   cursor: pointer;
+  font: 40;
+  font-weight: bold;
+  text-transform: uppercase;
 }
+
+.recipeDescription{
+  text-transform: uppercase;
+}
+
+.recipeProcedure{
+  text-transform: uppercase;
+}
+
+
 
 .containerPopup {
   position: absolute;
-  z-index: 3;
+  overflow:auto;
+  z-index: 1;
   top: 0;
   right: 0;
   bottom: 0;
@@ -165,4 +230,30 @@
   overflow: auto;
   background: #000;
   opacity: 0.2;
+}
+
+#buttonHeader{
+  justify-content: center;
+  display: flex;
+}
+
+#buttonSearch{
+  min-height: 50px;
+  font-size: 40;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#buttonAddCabinet{
+  min-height: 50px;
+  font-size: 40;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#cabinet{
+  justify-content: space-around;
+  align-content: left;
+  display: flex;
+  flex-wrap: wrap;
 }

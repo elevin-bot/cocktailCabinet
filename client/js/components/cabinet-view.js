@@ -17,14 +17,17 @@ export const renderCabinetView = () => {
   buttonSearch.textContent = "Get me drunk";
   buttonAddCabinet.id = "buttonAddCabinet";
   buttonAddCabinet.textContent = "Add to cabinet";
+  
+   cabinet.id = "cabinet"
 
   //appending----------------------------------
   buttonHeader.append(buttonSearch, buttonAddCabinet);
   divMain.append(buttonHeader);
 
+
  
 
-  cabinet.id = "cabinet"
+ 
   
 
   
@@ -69,19 +72,34 @@ export const renderCabinetView = () => {
           bottleUpdateBtn
         );
         cabinet.appendChild(cabinetBottle);
-        //Event Listeners for each remove button
+
         bottleRemoveBtn.addEventListener("click", () => {
           const id = bottleLabel.id;
           axios
             .delete(`/api/cabinet/${id}`)
             .then(() => {
-              alert("Liquor deleted");
               renderCabinetView();
             })
             .catch((err) => (page.textContent = err));
         });
+        
         bottleUpdateBtn.addEventListener("click", () => {
-          console.log("bottleUpdateBtn");
+          // Validate volume
+          const volume = bottleVolume.textContent
+          if (!volume || volume == 0 || isNaN(volume)) {
+            bottleVolume.textContent = 'Enter volume'
+            return
+          }
+          const data = { 
+            liquor_id: bottleLabel.id, 
+            volume: bottleVolume.textContent
+           };
+           axios
+            .put("/api/cabinet/", data)
+            .then(() => {
+              // renderCabinetView();
+            })
+            .catch((err) => (page.textContent = err));
         });
       });
     })

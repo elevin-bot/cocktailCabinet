@@ -7,9 +7,14 @@ export const renderHeader = () => {
   header.appendChild(h1Loader);
 
   //creating
-  const logOUtButton = document.createElement("button");
+  const logOutButton = document.createElement("button");
   const h1AfterLogin = document.createElement("h1");
   const span = document.createElement("span");
+
+
+  // setting
+  logOutButton.id = "logOutButton";
+  h1AfterLogin.id = "h1AfterLogin";
 
   // checking session , login icon changes if logged in
   axios
@@ -25,10 +30,10 @@ export const renderHeader = () => {
       //setting
       h1AfterLogin.textContent = response.data.name;
       span.textContent = `'s cabinet`;
-      logOUtButton.textContent = "Log out";
+      logOutButton.textContent = "Log out";
       // appending
       h1AfterLogin.appendChild(span);
-      header.appendChild(logOUtButton);
+      header.appendChild(logOutButton);
       header.appendChild(h1AfterLogin);
       renderCabinetView();
     })
@@ -46,7 +51,7 @@ export const renderHeader = () => {
     });
 
   //Event Listeners
-  logOUtButton.addEventListener("click", () => {
+  logOutButton.addEventListener("click", () => {
     renderLogOut();
   });
 };
