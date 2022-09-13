@@ -93,3 +93,73 @@ export const removeUserCabinet = () => {
         (page.textContent = "Something went wrong (removeUserCabinet): " + err.message)
     );
 };
+
+// Delete cocktail warning
+export const deleteCabinetWarning = () => {
+    const page = document.querySelector("#page")
+    // create modal box
+    const deleteCabinetModal = document.createElement("div");
+    const deleteCabinetModalTitle = document.createElement("div")
+    const deleteCabinetModalBody = document.createElement("div")
+    const containerPopup = document.createElement("div")
+
+    const deleteCabinetYes = document.createElement("button")
+    const deleteCabinetNo = document.createElement("button")
+    
+    // setting class tags
+
+    deleteCabinetModal.className = "deleteCabinetModal"
+    deleteCabinetModalTitle.className = "deleteCabinetModalTitle"
+    deleteCabinetModalBody.className = "deleteCabinetModalBody"
+    deleteCabinetYes.className = "deleteCabinetYes"
+    deleteCabinetNo.className = "deleteCabinetNo"
+
+    containerPopup.classList = "containerPopup"
+
+    
+    // attach divs to modal
+    containerPopup.append(deleteCabinetModal);
+    deleteCabinetModal.append(deleteCabinetModalTitle,deleteCabinetModalBody);
+
+    deleteCabinetModalBody.append(deleteCabinetYes,deleteCabinetNo);
+
+    // giving elements content
+    deleteCabinetModalTitle.innerHTML = "Are you sure you want to delete your cabinet? <br> <br> NOTE THIS WILL BE IRREVERSIBLE"
+
+    deleteCabinetYes.innerHTML = "YES"
+    deleteCabinetNo.innerHTML = "NO"
+
+    // attach to page
+    document.body.append(deleteCabinetModal);
+
+    // FUNCTIONS
+
+    //cancel popup
+    deleteCabinetNo.addEventListener("click", () => {
+        containerPopup.remove();
+        deleteCabinetModal.remove();
+      });
+
+    //cancel popup clicking on black screen
+    containerPopup.addEventListener("click", () => {
+        containerPopup.remove();
+        deleteCabinetModal.remove();
+      });
+
+    // YES DELETE
+    deleteCabinetYes.addEventListener("click", () => {
+        axios
+          .delete("/api/user_cabinet")
+          .then((response) => {
+            // Return to root page
+            location = "/";
+          })
+          .catch(
+            (err) =>
+              (page.textContent = "Something went wrong (removeUserCabinet): " + err.message)
+          );
+        
+    })
+    
+
+}

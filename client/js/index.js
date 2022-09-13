@@ -7,7 +7,7 @@ import { renderLogOut } from "./components/logout.js";
 import { addToCabinetRender } from "./components/cabinet-update.js";
 import { removeUserCabinet } from "./components/cabinet-update.js";
 import { renderCocktailView } from "./components/cocktail-view.js";
-
+import { deleteCabinetWarning } from "./components/cabinet-update.js";
 
 
 renderHeader();
@@ -23,4 +23,5 @@ window.renderLogOut = renderLogOut;
 window.addToCabinetRender = addToCabinetRender;
 window.removeUserCabinet = removeUserCabinet;
 window.renderCocktailView = renderCocktailView;
+window.deleteCabinetWarning = deleteCabinetWarning
 

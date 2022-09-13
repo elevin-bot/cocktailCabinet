@@ -24,8 +24,14 @@ export const renderCabinetView = () => {
   cabinet.id = "cabinet";
 
   //appending----------------------------------
-  buttonHeader.append(buttonSearch, buttonAddCabinet, buttonDeleteCabinet);
+  buttonHeader.append(
+    buttonAddCabinet,
+    buttonSearch, 
+    buttonDeleteCabinet
+    );
   divMain.append(buttonHeader);
+
+
 
   axios
     .get("api/cabinet")
@@ -60,8 +66,9 @@ export const renderCabinetView = () => {
         bottleLabel.append(
           bottleName,
           bottleVolume,
-          bottleRemoveBtn,
-          bottleUpdateBtn
+          bottleUpdateBtn,
+          bottleRemoveBtn
+          
         );
         cabinet.appendChild(cabinetBottle);
 
@@ -108,5 +115,5 @@ export const renderCabinetView = () => {
   // Event Listeners ----------------------------
   buttonSearch.addEventListener("click", renderCocktailView);
   buttonAddCabinet.addEventListener("click", addToCabinetRender);
-  buttonDeleteCabinet.addEventListener("click", removeUserCabinet);
+  buttonDeleteCabinet.addEventListener("click", deleteCabinetWarning);
 };
