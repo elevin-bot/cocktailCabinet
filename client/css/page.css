@@ -6,7 +6,7 @@ body {
 #header-nav {
   justify-content: center;
   min-height: 5rem;
-  background-color:pink;
+  background-color: pink;
 }
 
 #page {
@@ -15,8 +15,6 @@ body {
   align-items: center;
   margin: 0 5%;
   gap: 10px;
-  
-  
 }
 
 /* header */
@@ -97,8 +95,7 @@ body {
   justify-content: center;
 
   flex-wrap: wrap;
-  display:flex;
-
+  display: flex;
 }
 
 .bottleName {
@@ -115,7 +112,6 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 16;
-  text-transform: uppercase;
   text-align: center;
   align-self: center;
 }
@@ -133,7 +129,6 @@ body {
   align-content: bottom;
   align-self: center;
 }
-
 
 #divAddForm,
 .logOutReconfirm {
@@ -169,22 +164,31 @@ body {
   align-content: center;
   align-items: center;
   justify-content: center;
-  
+  border: 3px solid black;
+  align-self: center;
+  overflow-y: auto;
+  height: 50%;
 }
 
 .recipePage {
   padding: top 50px;
   padding: bottom 20px;
   border: 20px;
-  
-  
 }
+
 
 .recipeBook {
   border: 3px solid black;
   align-self: center;
   overflow-y: auto;
   height: 40%;
+}
+
+.selectCocktailBtn {
+  background-color: pink;
+  padding: 20px;
+  align-self: center;
+
 }
 
 .recipeTitle {
@@ -196,14 +200,14 @@ body {
   border-bottom: 100px;
 }
 
-.recipeDescription{
+.recipeDescription {
   text-transform: uppercase;
   padding: top 50px;
   padding: bottom 50px;
   border: 50px;
 }
 
-.recipeProcedure{
+.recipeProcedure {
   text-transform: uppercase;
   padding: top 50px;
   padding: bottom 50px;
@@ -215,6 +219,7 @@ body {
   padding: 20px;
   align-self: center;
 }
+
 
 
 /* modal */
@@ -230,6 +235,9 @@ body {
   background: rgba(0, 0, 0, 0.8);
 }
 
+
+.containerPopup,
+
 .modal {
   position: fixed;
   /* display: none; */
@@ -243,26 +251,21 @@ body {
   opacity: 0.2;
 }
 
-#buttonHeader{
+#buttonHeader {
   justify-content: center;
   display: flex;
 }
 
-#buttonSearch{
+#buttonSearch,
+#buttonAddCabinet,
+#buttonDeleteCabinet {
   min-height: 50px;
   font-size: 40;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-#buttonAddCabinet{
-  min-height: 50px;
-  font-size: 40;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-#cabinet{
+#cabinet {
   justify-content: space-around;
   align-content: left;
   display: flex;
@@ -270,4 +273,14 @@ body {
 }
 
 
+
 /* signup loader */
+
+#cancel {
+  padding: 10px 11px;
+}
+
+#recipeBookHeading {
+  color: blue;
+}
+

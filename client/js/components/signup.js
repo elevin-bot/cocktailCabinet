@@ -11,9 +11,6 @@ export const renderSignup = () => {
   const divLeft = document.createElement("div");
   const form = document.createElement("form");
   const h3 = document.createElement("h3");
-  //
-  //
-  //
 
   // vvvvvvvvv  Input Layout vvvvvvvvvvvvvv
   const divLayoutInputName = document.createElement("div");
@@ -26,9 +23,6 @@ export const renderSignup = () => {
   const labelPasswordCheck = document.createElement("label");
   // ^^^^^^^^^^ Input Layout ^^^^^^^^^^^^
 
-  //
-  //
-  //
   const inputName = document.createElement("input");
   const inputEmail = document.createElement("input");
   const inputPassword = document.createElement("input");
@@ -48,11 +42,6 @@ export const renderSignup = () => {
   divLeft.className = "signUpDivLeft";
   form.name = "form";
   h3.textContent = "Sign up to get your cabinet";
-
-  //
-  //
-  //
-  //
 
   // vvvvvvvvv  Input Layout vvvvvvvvvvvvvv
   divLayoutInputName.className = "divLayoutInput";
@@ -75,9 +64,6 @@ export const renderSignup = () => {
   labelPasswordCheck.className = "labelLayout";
   labelPasswordCheck.textContent = "Password";
   // ^^^^^^^^^^ Input Layout ^^^^^^^^^^^^
-  //
-  //
-  //
 
   inputName.placeholder = "Enter your name";
   inputName.name = "name";
@@ -103,9 +89,6 @@ export const renderSignup = () => {
 
   // appending divLeft
 
-  //
-  //
-  //
   // vvvvvvvvv  Input Layout vvvvvvvvvvvvvv
 
   divLayoutInputName.append(inputName, labelName);
@@ -121,17 +104,6 @@ export const renderSignup = () => {
     buttonGetCabinet
   );
   // ^^^^^^^^^^ Input Layout ^^^^^^^^^^^^
-  //
-  //
-  //
-
-  // form.append(
-  //   inputName,
-  //   inputEmail,
-  //   inputPassword,
-  //   inputPasswordCheck,
-  //   buttonGetCabinet
-  // );
 
   divLeft.append(h3, form, spanError);
 
