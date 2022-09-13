@@ -41,7 +41,8 @@ body {
   flex-direction: column;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
-  padding: 10%;
+  border-top: 10%;
+  padding: 5%;
   transition: 0.7s;
   height: 60%;
   width: 60%;
@@ -148,6 +149,8 @@ body {
   align-content: center;
 }
 
+/* recipe display */
+
 .recipeBook {
   position: fixed;
   z-index: 1;
@@ -177,12 +180,6 @@ body {
   
 }
 
-.selectCocktailBtn {
-  background-color: pink;
-  padding: 20px;
-  align-self: center;
-}
-
 .recipeBook {
   border: 3px solid black;
   align-self: center;
@@ -193,20 +190,34 @@ body {
 .recipeTitle {
   font-weight: bold;
   cursor: pointer;
-  font: 40;
+  font-size: 60;
   font-weight: bold;
   text-transform: uppercase;
+  border-bottom: 100px;
 }
 
 .recipeDescription{
   text-transform: uppercase;
+  padding: top 50px;
+  padding: bottom 50px;
+  border: 50px;
 }
 
 .recipeProcedure{
   text-transform: uppercase;
+  padding: top 50px;
+  padding: bottom 50px;
+  border: 50px;
+}
+
+.selectCocktailBtn {
+  background-color: pink;
+  padding: 20px;
+  align-self: center;
 }
 
 
+/* modal */
 
 .containerPopup {
   position: absolute;
@@ -257,3 +268,6 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+
+
+/* signup loader */

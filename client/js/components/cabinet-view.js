@@ -27,13 +27,6 @@ export const renderCabinetView = () => {
 
  
 
- 
-  
-
-  
-  
-
-
   axios
     .get("api/cabinet")
     .then((response) => {
