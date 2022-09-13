@@ -22,17 +22,23 @@ export const renderCocktailView = () => {
       returnButton.textContent = "Cancel";
       recipeBookModal.className = "modal";
 
+      // Cocktails heading
+      const recipeBookHeading = document.createElement("h3");
+      recipeBookHeading.textContent = 'Your cocktails. Click on cocktail to see details and to select. '
+      recipeBookHeading.id = "recipeBookHeading"
+      recipeBook.append(recipeBookHeading)
+
       //appending-------------------------------------
       recipeBookModal.append(returnButton, recipeBook);
-
+      
       //for each recipe
       recipeArray.forEach((recipe) => {
         //creating
         const recipePage = document.createElement("div");
         const recipeTitle = document.createElement("div");
         const selectCocktailBtn = document.createElement("button");
-        const recipeDescription = document.createElement("div");
-        const recipeProcedure = document.createElement("div");
+        const recipeDescription = document.createElement("p");
+        const recipeProcedure = document.createElement("p");
         //setting
         recipePage.className = "recipePage";
         recipeDescription.className = "recipeDescription";
@@ -52,10 +58,10 @@ export const renderCocktailView = () => {
 
         //appending
         recipePage.append(
-          recipeTitle,
-          recipeDescription,
-          recipeProcedure,
-          selectCocktailBtn
+            recipeTitle,
+            recipeDescription,
+            recipeProcedure,
+            selectCocktailBtn
         );
         recipeBook.append(recipePage);
 
@@ -114,4 +120,3 @@ export const renderCocktailView = () => {
     );
 };
 
-// select cocktail recipe

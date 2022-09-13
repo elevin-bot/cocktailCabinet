@@ -166,7 +166,10 @@ body {
   align-content: center;
   align-items: center;
   justify-content: center;
-  
+  border: 3px solid black;
+  align-self: center;
+  overflow-y: auto;
+  height: 50%;
 }
 
 .recipePage {
@@ -181,13 +184,6 @@ body {
   background-color: pink;
   padding: 20px;
   align-self: center;
-}
-
-.recipeBook {
-  border: 3px solid black;
-  align-self: center;
-  overflow-y: auto;
-  height: 40%;
 }
 
 .recipeTitle {
@@ -253,4 +249,8 @@ body {
 
 #cancel {
   padding: 10px 11px;
+}
+
+#recipeBookHeading {
+  color: red;
 }
