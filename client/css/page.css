@@ -166,7 +166,10 @@ body {
   align-content: center;
   align-items: center;
   justify-content: center;
-  
+  border: 3px solid black;
+  align-self: center;
+  overflow-y: auto;
+  height: 50%;
 }
 
 .recipePage {
@@ -181,13 +184,6 @@ body {
   background-color: pink;
   padding: 20px;
   align-self: center;
-}
-
-.recipeBook {
-  border: 3px solid black;
-  align-self: center;
-  overflow-y: auto;
-  height: 40%;
 }
 
 .recipeTitle {
@@ -237,14 +233,7 @@ body {
   display: flex;
 }
 
-#buttonSearch{
-  min-height: 50px;
-  font-size: 40;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-#buttonAddCabinet{
+#buttonSearch, #buttonAddCabinet, #buttonDeleteCabinet {
   min-height: 50px;
   font-size: 40;
   font-weight: bold;
@@ -256,4 +245,12 @@ body {
   align-content: left;
   display: flex;
   flex-wrap: wrap;
+}
+
+#cancel {
+  padding: 10px 11px;
+}
+
+#recipeBookHeading {
+  color: blue;
 }

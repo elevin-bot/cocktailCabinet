@@ -7,6 +7,7 @@ export const renderCabinetView = () => {
   const cabinet = document.createElement("div");
   const buttonSearch = document.createElement("button");
   const buttonAddCabinet = document.createElement("button");
+  const buttonDeleteCabinet = document.createElement("button");
   const buttonHeader = document.createElement("div");
 
   //setting------------------------------------
@@ -17,22 +18,14 @@ export const renderCabinetView = () => {
   buttonSearch.textContent = "Get me drunk";
   buttonAddCabinet.id = "buttonAddCabinet";
   buttonAddCabinet.textContent = "Add to cabinet";
+  buttonDeleteCabinet.id = "buttonDeleteCabinet"
+  buttonDeleteCabinet.textContent = "Delete cabinet and unregister"
   
-   cabinet.id = "cabinet"
+  cabinet.id = "cabinet"
 
   //appending----------------------------------
-  buttonHeader.append(buttonSearch, buttonAddCabinet);
+  buttonHeader.append(buttonSearch, buttonAddCabinet, buttonDeleteCabinet);
   divMain.append(buttonHeader);
-
-
- 
-
- 
-  
-
-  
-  
-
 
   axios
     .get("api/cabinet")
@@ -88,6 +81,8 @@ export const renderCabinetView = () => {
           const volume = bottleVolume.textContent
           if (!volume || volume == 0 || isNaN(volume)) {
             bottleVolume.textContent = 'Enter volume'
+            bottleVolume.innerHTML = 'Enter</br>volume'
+            
             return
           }
           const data = { 
@@ -113,7 +108,8 @@ export const renderCabinetView = () => {
   // appending page
   page.replaceChildren(divMain);
 
-  // Event Listener ----------------------------
+  // Event Listeners ----------------------------
   buttonSearch.addEventListener("click", renderCocktailView);
   buttonAddCabinet.addEventListener("click", addToCabinetRender);
+  buttonDeleteCabinet.addEventListener("click", removeUserCabinet);
 };
