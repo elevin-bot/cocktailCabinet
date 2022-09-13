@@ -28,10 +28,10 @@ export const renderCocktailView = () => {
       recipeBookHeading.id = "recipeBookHeading"
       recipeBook.append(recipeBookHeading)
 
-      //appending-------------------------------------
+      // Appending-------------------------------------
       recipeBookModal.append(returnButton, recipeBook);
       
-      //for each recipe
+      // for each recipe
       recipeArray.forEach((recipe) => {
         //creating
         const recipePage = document.createElement("div");
