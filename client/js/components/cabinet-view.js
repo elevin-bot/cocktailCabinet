@@ -115,5 +115,5 @@ export const renderCabinetView = () => {
   // Event Listeners ----------------------------
   buttonSearch.addEventListener("click", renderCocktailView);
   buttonAddCabinet.addEventListener("click", addToCabinetRender);
-  buttonDeleteCabinet.addEventListener("click", removeUserCabinet);
+  buttonDeleteCabinet.addEventListener("click", deleteCabinetWarning);
 };
