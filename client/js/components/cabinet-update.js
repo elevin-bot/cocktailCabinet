@@ -15,15 +15,15 @@ export const addToCabinetRender = () => {
   const cancelBtn = document.createElement("button");
   cancelBtn.id = "cancel";
   cancelBtn.textContent = "Cancel";
+  cancelBtn.type = 'Button'
   const addBtn = document.createElement("button");
   addBtn.id = "Add";
   addBtn.textContent = "Add";
   const inputVolume = document.createElement("input");
-  inputVolume.placeholder = "Bottle volume";
+  inputVolume.placeholder = "Bottle volume (ml)";
   inputVolume.setAttribute("required", "");
-  addForm.append(h3, select, inputVolume, addBtn);
-  //   const checkFormExists = document.querySelector();
-  divMain.append(addForm, cancelBtn);
+  addForm.append(h3, select, inputVolume, addBtn, cancelBtn);
+  divMain.append(addForm);
 
   document.body.append(containerPopup);
   document.body.append(divMain);
@@ -54,18 +54,17 @@ export const addToCabinetRender = () => {
     };
 
     // API call
-    console.log(data);
     axios
-      .post("api/cabinet", data)
-      .then(() => {
-        renderCabinetView();
-        // Return to parent page (Cabinet list page)
-      })
-      .catch(
-        (err) =>
-          (page.textContent =
-            "Something went wrong (addToCabinetRender): " + err.message)
-      );
+        .post("api/cabinet", data)
+        .then(() => {
+            // Return to parent page (Cabinet list page)
+            renderCabinetView();
+         })
+        .catch(
+            (err) =>
+                (page.textContent =
+                "Something went wrong (addToCabinetRender): " + err.message)
+        );
         containerPopup.remove();
         divMain.remove();
   });
@@ -81,16 +80,16 @@ export const addToCabinetRender = () => {
   });
 };
 
-// 9d. Delete cabinet
+// 9d. Delete cabinet and unregister
 export const removeUserCabinet = () => {
   axios
     .delete("/api/user_cabinet")
     .then((response) => {
-      // Return to parent page (Cabinet list page)
+      // Return to root page
+      location = "/";
     })
     .catch(
       (err) =>
-        (page.textContent =
-          "Something went wrong (removeCabinet): " + err.message)
+        (page.textContent = "Something went wrong (removeUserCabinet): " + err.message)
     );
 };

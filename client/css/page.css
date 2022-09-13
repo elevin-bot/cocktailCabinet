@@ -237,14 +237,7 @@ body {
   display: flex;
 }
 
-#buttonSearch{
-  min-height: 50px;
-  font-size: 40;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-#buttonAddCabinet{
+#buttonSearch, #buttonAddCabinet, #buttonDeleteCabinet {
   min-height: 50px;
   font-size: 40;
   font-weight: bold;
@@ -256,4 +249,8 @@ body {
   align-content: left;
   display: flex;
   flex-wrap: wrap;
+}
+
+#cancel {
+  padding: 10px 11px;
 }
