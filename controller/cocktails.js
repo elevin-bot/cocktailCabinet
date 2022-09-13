@@ -105,10 +105,12 @@ router.delete("/api/cabinet/:id", async (req, res) => {
   }
 })
 
-// 9d. Delete user cabinet
+// 9d. Delete user cabinet and delete user account
 router.delete("/api/user_cabinet", async (req, res) => {
   try {
-    const dbRes = await db.query("DELETE from cabinet_contents where user_id = $1", [req.session.user_id])
+    let dbRes = await db.query("DELETE from cabinet_contents where user_id = $1", [req.session.user_id])
+    dbRes = await db.query("DELETE from users where id = $1", [req.session.user_id])
+    req.session.destroy()
     res.json({})
   }
   catch(err) {
