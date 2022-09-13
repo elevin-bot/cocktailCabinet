@@ -2,10 +2,10 @@ INSERT INTO users(name, email, password) VALUES('tester','tester@testemail.com',
 
 INSERT INTO liquor(name) VALUES('Vodka'), ('Tequila'), ('Bourbon'), ('White Rum'),('Dark Rum'), ('Scotch Whiskey'), ('Gin'),('Triple Sec'), ('Vermouth'), ('Absinthe');
 
-INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(1, 1, 750);
-INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(1, 2, 750);
-INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(1, 6, 750);
-INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(1, 7, 250);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 1, 750);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 2, 750);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 6, 750);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 7, 250);
 
 
 

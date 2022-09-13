@@ -6,7 +6,7 @@ body {
 #header-nav {
   justify-content: center;
   min-height: 5rem;
-  background-color:pink;
+  background-color: pink;
 }
 
 #page {
@@ -15,8 +15,6 @@ body {
   align-items: center;
   margin: 0 5%;
   gap: 10px;
-  
-  
 }
 
 /* header */
@@ -96,8 +94,7 @@ body {
   justify-content: center;
 
   flex-wrap: wrap;
-  display:flex;
-
+  display: flex;
 }
 
 .bottleName {
@@ -132,7 +129,6 @@ body {
   align-content: bottom;
   align-self: center;
 }
-
 
 #divAddForm,
 .logOutReconfirm {
@@ -176,8 +172,6 @@ body {
   padding: top 50px;
   padding: bottom 20px;
   border: 20px;
-  
-  
 }
 
 .selectCocktailBtn {
@@ -194,27 +188,15 @@ body {
   text-transform: uppercase;
 }
 
-.recipeDescription{
+.recipeDescription {
   text-transform: uppercase;
 }
 
-.recipeProcedure{
+.recipeProcedure {
   text-transform: uppercase;
 }
 
-
-
-.containerPopup {
-  position: absolute;
-  overflow:auto;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.8);
-}
-
+.containerPopup,
 .modal {
   position: fixed;
   /* display: none; */
@@ -228,19 +210,21 @@ body {
   opacity: 0.2;
 }
 
-#buttonHeader{
+#buttonHeader {
   justify-content: center;
   display: flex;
 }
 
-#buttonSearch, #buttonAddCabinet, #buttonDeleteCabinet {
+#buttonSearch,
+#buttonAddCabinet,
+#buttonDeleteCabinet {
   min-height: 50px;
   font-size: 40;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-#cabinet{
+#cabinet {
   justify-content: space-around;
   align-content: left;
   display: flex;
