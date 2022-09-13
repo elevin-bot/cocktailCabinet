@@ -24,15 +24,15 @@ export const renderCabinetView = () => {
   cabinet.id = "cabinet";
 
   //appending----------------------------------
-  buttonHeader.append(buttonSearch, buttonAddCabinet, buttonDeleteCabinet);
+  buttonHeader.append(
+    buttonAddCabinet,
+    buttonSearch, 
+    buttonDeleteCabinet
+    );
   divMain.append(buttonHeader);
 
-<<<<<<< HEAD
 
- 
 
-=======
->>>>>>> 31a8ad939e300467933d1e06b4926fc852846f16
   axios
     .get("api/cabinet")
     .then((response) => {
@@ -66,8 +66,9 @@ export const renderCabinetView = () => {
         bottleLabel.append(
           bottleName,
           bottleVolume,
-          bottleRemoveBtn,
-          bottleUpdateBtn
+          bottleUpdateBtn,
+          bottleRemoveBtn
+          
         );
         cabinet.appendChild(cabinetBottle);
 

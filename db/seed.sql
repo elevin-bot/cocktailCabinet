@@ -1,12 +1,23 @@
-INSERT INTO users(name, email, password) VALUES('tester','tester@testemail.com','password');
+-- sample data for users
 
-INSERT INTO liquor(name) VALUES('Vodka'), ('Tequila'), ('Bourbon'), ('White Rum'),('Dark Rum'), ('Scotch Whiskey'), ('Gin'),('Triple Sec'), ('Vermouth'), ('Absinthe');
+INSERT INTO users(name, email, password) VALUES('tester','tester@testemail.com','password');
 
 INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 1, 750);
 INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 2, 750);
 INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 6, 750);
 INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 7, 250);
 
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 1, 750);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 2, 750);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 6, 750);
+INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 7, 250);
+
+
+-- create alcohols for liquor list
+
+-- INSERT INTO liquor(name) VALUES('Vodka'), ('Tequila'), ('Bourbon'), ('White Rum'),('Dark Rum'), ('Scotch Whiskey'), ('Gin'),('Whiskey'), ('Vermouth'), ('Absinthe'), ('Brandy');
+
+INSERT INTO liquor(name,image) VALUES('Vodka','./images/alcohol-images/Vodka.png'), ('Tequila','./images/alcohol-images/Tequila.png'), ('Bourbon','./images/alcohol-images/Bourbon.png'), ('White Rum','./images/alcohol-images/WhiteRum.png'), ('Dark Rum', './images/alcohol-images/DarkRum.png'), ('Scotch Whiskey', './images/alcohol-images/ScotchWhiskey.png'), ('Gin','./images/alcohol-images/Gin.png'),('Whiskey','./images/alcohol-images/Whiskey.png'), ('Vermouth','./images/alcohol-images/Vermouth.png'), ('Absinthe','./images/alcohol-images/Absinthe.png'),('Brandy','./images/alcohol-images/Brandy.png');
 
 
 
@@ -108,9 +119,9 @@ INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(7, 5, 2
 INSERT INTO cocktail(name,description,procedure) 
 VALUES('Long Island Iced Tea', 
 E'50ml Vodka </br> 
-50ml Gin </br> 50ml Tequila </br> 50ml White Rum </br> 50ml Triple Sec </br> Ice </br> 50ml Lime Juice\ 500ml cola' ,
+50ml Gin </br> 50ml Tequila </br> 50ml White Rum </br> 50ml Whiskey </br> Ice </br> 50ml Lime Juice\ 500ml cola' ,
 E'STEP 1</br>
-Pour the vodka, gin, tequila, rum and triple sec into a large (1.5l) jug, and add lime juice to taste. Half fill the jug with ice, then stir until the outside feels cold.
+Pour the vodka, gin, tequila, rum and Whiskey into a large (1.5l) jug, and add lime juice to taste. Half fill the jug with ice, then stir until the outside feels cold.
 </br> </br>
 
 STEP 2</br>
@@ -143,7 +154,5 @@ INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(9, 7, 3
 INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(9, 9, 30);
 INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(9, 10, 5);
 
-INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 1, 750);
-INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 2, 750);
-INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 6, 750);
-INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 7, 250);
+
+
