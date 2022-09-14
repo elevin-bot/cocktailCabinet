@@ -1,6 +1,8 @@
 // 9a. Add to cabinet
 export const addToCabinetRender = () => {
+  //access page
   const page = document.querySelector("#page");
+  //creating and setting -----------------------
   const containerPopup = document.createElement("div");
   containerPopup.className = "containerPopup";
   const divMain = document.createElement("div");
@@ -11,22 +13,17 @@ export const addToCabinetRender = () => {
   addForm.id = "addForm";
   const select = document.createElement("select");
   select.id = "selectAlcohol";
-
   const cancelBtn = document.createElement("button");
   cancelBtn.id = "cancel";
   cancelBtn.textContent = "Cancel";
-  cancelBtn.type = 'Button'
+  cancelBtn.type = "Button";
   const addBtn = document.createElement("button");
   addBtn.id = "Add";
   addBtn.textContent = "Add";
   const inputVolume = document.createElement("input");
   inputVolume.placeholder = "Bottle volume (ml)";
   inputVolume.setAttribute("required", "");
-  addForm.append(h3, select, inputVolume, addBtn, cancelBtn);
-  divMain.append(addForm);
-
-  document.body.append(containerPopup);
-  document.body.append(divMain);
+  inputVolume.type = "number";
 
   // 5. Populate select (drop dpown) with liquor list
   axios
@@ -45,28 +42,33 @@ export const addToCabinetRender = () => {
         (page.textContent = "Something went wrong (liquorList): " + err.message)
     );
 
-  //Event Listener
+  //appending ------------------------------------
+  addForm.append(h3, select, inputVolume, addBtn, cancelBtn);
+  divMain.append(addForm);
+  document.body.append(containerPopup);
+  document.body.append(divMain);
+
+  //Events Listeners -----------------------------
   addForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = {
       liquor_id: select.options[select.selectedIndex].value,
       volume: inputVolume.value,
     };
-
     // API call
     axios
-        .post("api/cabinet", data)
-        .then(() => {
-            // Return to parent page (Cabinet list page)
-            renderCabinetView();
-         })
-        .catch(
-            (err) =>
-                (page.textContent =
-                "Something went wrong (addToCabinetRender): " + err.message)
-        );
-        containerPopup.remove();
-        divMain.remove();
+      .post("api/cabinet", data)
+      .then(() => {
+        // Return to parent page (Cabinet list page)
+        renderCabinetView();
+      })
+      .catch(
+        (err) =>
+          (page.textContent =
+            "Something went wrong (addToCabinetRender): " + err.message)
+      );
+    containerPopup.remove();
+    divMain.remove();
   });
   //cancel popup
   cancelBtn.addEventListener("click", () => {
@@ -77,6 +79,12 @@ export const addToCabinetRender = () => {
   containerPopup.addEventListener("click", () => {
     containerPopup.remove();
     divMain.remove();
+  });
+  //validating negative numbers
+  inputVolume.addEventListener("input", () => {
+    if (inputVolume.value < 0) {
+      inputVolume.value = 0;
+    }
   });
 };
 
@@ -90,76 +98,71 @@ export const removeUserCabinet = () => {
     })
     .catch(
       (err) =>
-        (page.textContent = "Something went wrong (removeUserCabinet): " + err.message)
+        (page.textContent =
+          "Something went wrong (removeUserCabinet): " + err.message)
     );
 };
 
-// Delete cocktail warning
+// Delete cabinet warning
 export const deleteCabinetWarning = () => {
-    const page = document.querySelector("#page")
-    // create modal box
-    const deleteCabinetModal = document.createElement("div");
-    const deleteCabinetModalTitle = document.createElement("div")
-    const deleteCabinetModalBody = document.createElement("div")
-    const containerPopup = document.createElement("div")
+  const page = document.querySelector("#page");
 
-    const deleteCabinetYes = document.createElement("button")
-    const deleteCabinetNo = document.createElement("button")
-    
-    // setting class tags
+  // create modal box
+  const deleteCabinetModal = document.createElement("div");
+  const deleteCabinetModalTitle = document.createElement("div");
+  const deleteCabinetModalBody = document.createElement("div");
+  const containerPopup = document.createElement("div");
+  const deleteCabinetYes = document.createElement("button");
+  const deleteCabinetNo = document.createElement("button");
 
-    deleteCabinetModal.className = "deleteCabinetModal"
-    deleteCabinetModalTitle.className = "deleteCabinetModalTitle"
-    deleteCabinetModalBody.className = "deleteCabinetModalBody"
-    deleteCabinetYes.className = "deleteCabinetYes"
-    deleteCabinetNo.className = "deleteCabinetNo"
+  // setting class tags
+  deleteCabinetModal.className = "deleteCabinetModal";
+  deleteCabinetModalTitle.className = "deleteCabinetModalTitle";
+  deleteCabinetModalBody.className = "deleteCabinetModalBody";
+  deleteCabinetYes.className = "deleteCabinetYes";
+  deleteCabinetNo.className = "deleteCabinetNo";
+  containerPopup.classList = "containerPopup";
 
-    containerPopup.classList = "containerPopup"
+  // attach divs to modal
+  containerPopup.append(deleteCabinetModal);
+  deleteCabinetModal.append(deleteCabinetModalTitle, deleteCabinetModalBody);
+  deleteCabinetModalBody.append(deleteCabinetYes, deleteCabinetNo);
 
-    
-    // attach divs to modal
-    containerPopup.append(deleteCabinetModal);
-    deleteCabinetModal.append(deleteCabinetModalTitle,deleteCabinetModalBody);
+  // giving elements content
+  deleteCabinetModalTitle.innerHTML =
+    "Are you sure you want to delete your cabinet? <br> <br> NOTE THIS WILL BE IRREVERSIBLE";
+  deleteCabinetYes.innerHTML = "YES";
+  deleteCabinetNo.innerHTML = "NO";
 
-    deleteCabinetModalBody.append(deleteCabinetYes,deleteCabinetNo);
+  // attach to page
+  document.body.append(deleteCabinetModal);
 
-    // giving elements content
-    deleteCabinetModalTitle.innerHTML = "Are you sure you want to delete your cabinet? <br> <br> NOTE THIS WILL BE IRREVERSIBLE"
+  // FUNCTIONS
 
-    deleteCabinetYes.innerHTML = "YES"
-    deleteCabinetNo.innerHTML = "NO"
+  //cancel popup
+  deleteCabinetNo.addEventListener("click", () => {
+    containerPopup.remove();
+    deleteCabinetModal.remove();
+  });
 
-    // attach to page
-    document.body.append(deleteCabinetModal);
+  //cancel popup clicking on black screen
+  containerPopup.addEventListener("click", () => {
+    containerPopup.remove();
+    deleteCabinetModal.remove();
+  });
 
-    // FUNCTIONS
-
-    //cancel popup
-    deleteCabinetNo.addEventListener("click", () => {
-        containerPopup.remove();
-        deleteCabinetModal.remove();
-      });
-
-    //cancel popup clicking on black screen
-    containerPopup.addEventListener("click", () => {
-        containerPopup.remove();
-        deleteCabinetModal.remove();
-      });
-
-    // YES DELETE
-    deleteCabinetYes.addEventListener("click", () => {
-        axios
-          .delete("/api/user_cabinet")
-          .then((response) => {
-            // Return to root page
-            location = "/";
-          })
-          .catch(
-            (err) =>
-              (page.textContent = "Something went wrong (removeUserCabinet): " + err.message)
-          );
-        
-    })
-    
-
-}
+  // YES DELETE
+  deleteCabinetYes.addEventListener("click", () => {
+    axios
+      .delete("/api/user_cabinet")
+      .then((response) => {
+        // Return to root page
+        location = "/";
+      })
+      .catch(
+        (err) =>
+          (page.textContent =
+            "Something went wrong (removeUserCabinet): " + err.message)
+      );
+  });
+};
