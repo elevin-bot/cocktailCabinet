@@ -62,13 +62,14 @@ export const renderCabinetView = () => {
 
         //Event Listeners for each liquor on the cabinet
         bottleRemoveBtn.addEventListener("click", () => {
-          const id = bottleLabel.id;
-          axios
-            .delete(`/api/cabinet/${id}`)
-            .then(() => {
-              renderCabinetView();
-            })
-            .catch((err) => (page.textContent = err));
+          removeAlcoholModal(item.id, item.name);
+          // const id = bottleLabel.id;
+          // axios
+          //   .delete(`/api/cabinet/${id}`)
+          //   .then(() => {
+          //     renderCabinetView();
+          //   })
+          //   .catch((err) => (page.textContent = err));
         });
 
         bottleUpdateBtn.addEventListener("click", () => {
@@ -101,9 +102,7 @@ export const renderCabinetView = () => {
 
 // volume update modal - util
 const volumeUpdateModal = (liquor_id,name,volume,bottleVolume) => {
-  console.log(volume)
-  console.log(liquor_id)
-
+  
   const page = document.querySelector("#page");
 
   // create modal box
@@ -165,3 +164,56 @@ const volumeUpdateModal = (liquor_id,name,volume,bottleVolume) => {
     volumeUpdateModalContainer.remove();
   })
 };
+
+// remove alcohol from cabinet modal
+const removeAlcoholModal = (id,name) => {
+  const page = document.querySelector("#page");
+
+  // create modal elements
+  const removeAlcoholModal = document.createElement("div");
+  const removeAlcoholModalContainer = document.createElement("div");
+  const RAMtitle = document.createElement("div");
+  const RAMbody = document.createElement("div");
+  const RAMyes = document.createElement("button");
+  const RAMno = document.createElement("button");
+
+  // set class tags
+  removeAlcoholModal.className = "containerPopup";
+  removeAlcoholModalContainer.className = "removeAlcoholModalContainer"
+  RAMtitle.className = "RAMtitle";
+  RAMbody.className = "RAMbody";
+  RAMyes.className = "RAMyes";
+  RAMno.className = "RAMno";
+
+  RAMtitle.innerHTML = `Are you sure you want to remove ${ name } from cabinet?`
+  RAMyes.innerHTML = "Yes"
+  RAMno.innerHTML = "No"
+
+  // append
+  removeAlcoholModalContainer.append(RAMtitle,RAMbody);
+  RAMbody.append(RAMyes,RAMno);
+  page.append(removeAlcoholModal, removeAlcoholModalContainer);
+  
+  RAMyes.addEventListener("click", () => {
+    axios
+            .delete(`/api/cabinet/${id}`)
+            .then(() => {
+              removeAlcoholModal.remove();
+              removeAlcoholModalContainer.remove();
+              renderCabinetView();
+            })
+  })
+
+  RAMno.addEventListener("click", () => {
+    removeAlcoholModal.remove();
+    removeAlcoholModalContainer.remove();
+
+  })
+
+  removeAlcoholModal.addEventListener("click", () => {
+    removeAlcoholModal.remove();
+    removeAlcoholModalContainer.remove();
+
+  })
+
+}

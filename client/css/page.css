@@ -391,3 +391,18 @@ body {
   background-color: blue;
 
 }
+
+
+/* confirm remove alcohol modal */
+
+.removeAlcoholModalContainer{
+  position: fixed;
+  z-index: 2;
+  top: 25%;
+  left: 25%;
+  max-width: 350px;
+  max-height: 40%;
+  display: block;
+  padding: 100px;
+  background-color: blue;
+};
