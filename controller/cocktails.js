@@ -43,7 +43,7 @@ router.get("/api/cocktails", async (req, res) => {
 // 8. Update volumes in cabinet for the chosen recipe
 router.patch("/api/cabinet/:id", async (req, res) => {
   const cocktail_id = req.params.id
-
+  console.log(cocktail_id)
   try {
     // Update volumes in cabinet
     const sql = `UPDATE cabinet_contents cc
