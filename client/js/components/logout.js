@@ -1,6 +1,4 @@
 export const renderLogOut = () => {
-  //lock scroll when modal is on
-  // document.body.style.overflow = "hidden";
   //accessing page
   const page = document.querySelector("#page");
 
@@ -40,18 +38,22 @@ export const renderLogOut = () => {
   });
   //cancel modal
   buttonCancel.addEventListener("click", () => {
-    //unlock scroll when modal is on
-    // document.body.style.overflow = "auto";
     //remove modal
     divMain.remove();
     containerPopup.remove();
   });
   //cancel modal clicking on black screen overlay
   containerPopup.addEventListener("click", () => {
-    //unlock scroll when modal is on
-    // document.body.style.overflow = "auto";
     //remove modal
     divMain.remove();
     containerPopup.remove();
+  });
+  //cancel modal by pressing escape
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      //remove modal
+      divMain.remove();
+      containerPopup.remove();
+    }
   });
 };

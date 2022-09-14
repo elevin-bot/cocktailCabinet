@@ -24,13 +24,14 @@ export const renderCocktailView = () => {
 
       // Cocktails heading
       const recipeBookHeading = document.createElement("h3");
-      recipeBookHeading.textContent = 'Your cocktails. Click on cocktail to see details and to select. '
-      recipeBookHeading.id = "recipeBookHeading"
-      recipeBook.append(recipeBookHeading)
+      recipeBookHeading.textContent =
+        "Your cocktails. Click on cocktail to see details and to select. ";
+      recipeBookHeading.id = "recipeBookHeading";
+      recipeBook.append(recipeBookHeading);
 
       // Appending-------------------------------------
       recipeBookModal.append(returnButton, recipeBook);
-      
+
       // for each recipe
       recipeArray.forEach((recipe) => {
         //creating
@@ -58,10 +59,10 @@ export const renderCocktailView = () => {
 
         //appending
         recipePage.append(
-            recipeTitle,
-            recipeDescription,
-            recipeProcedure,
-            selectCocktailBtn
+          recipeTitle,
+          recipeDescription,
+          recipeProcedure,
+          selectCocktailBtn
         );
         recipeBook.append(recipePage);
 
@@ -76,12 +77,12 @@ export const renderCocktailView = () => {
           axios
             .patch(`/api/cabinet/${recipe.id}`)
             .then((response) => {
-                renderCabinetView();
-                recipePage.replaceChildren(
-                    "All volumes in your cabinet have been updated, ",
-                    "\n",
-                    "Enjoy your ",
-                    recipeTitle
+              renderCabinetView();
+              recipePage.replaceChildren(
+                "All volumes in your cabinet have been updated, ",
+                "\n",
+                "Enjoy your ",
+                recipeTitle
               );
               recipeBook.replaceChildren(recipePage);
 
@@ -103,12 +104,12 @@ export const renderCocktailView = () => {
       document.body.append(recipeBook);
 
       //Event listener - for divMain -----------
-      //cancel popup
+      //cancel modal
       returnButton.addEventListener("click", () => {
         recipeBook.remove();
         containerPopup.remove();
       });
-      //cancel popup clicking on black screen
+      //cancel modal clicking on black screen
       containerPopup.addEventListener("click", () => {
         recipeBook.remove();
         containerPopup.remove();
@@ -120,4 +121,3 @@ export const renderCocktailView = () => {
           "Something went wrong (cocktail view): " + err.message)
     );
 };
-
