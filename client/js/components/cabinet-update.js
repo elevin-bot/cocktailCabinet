@@ -117,6 +117,7 @@ export const deleteCabinetWarning = () => {
 
   // setting class tags
   deleteCabinetModal.className = "deleteCabinetModal";
+  deleteCabinetModal.classList.add("logOutReconfirm");
   deleteCabinetModalTitle.className = "deleteCabinetModalTitle";
   deleteCabinetModalBody.className = "deleteCabinetModalBody";
   deleteCabinetYes.className = "deleteCabinetYes";
@@ -135,8 +136,8 @@ export const deleteCabinetWarning = () => {
   deleteCabinetNo.innerHTML = "NO";
 
   // attach to page
+  document.body.append(containerPopup);
   document.body.append(deleteCabinetModal);
-
   // FUNCTIONS
 
   //cancel popup

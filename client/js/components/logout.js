@@ -3,9 +3,7 @@ export const renderLogOut = () => {
   const page = document.querySelector("#page");
 
   //creating----------------------------
-
   const containerPopup = document.createElement("div");
-
   const divMain = document.createElement("div");
   const p = document.createElement("p");
   const buttonYes = document.createElement("button");
@@ -38,14 +36,24 @@ export const renderLogOut = () => {
         alert(err);
       });
   });
-  //cancel popup
+  //cancel modal
   buttonCancel.addEventListener("click", () => {
+    //remove modal
     divMain.remove();
     containerPopup.remove();
   });
-  //cancel popup clicking on black screen
+  //cancel modal clicking on black screen overlay
   containerPopup.addEventListener("click", () => {
+    //remove modal
     divMain.remove();
     containerPopup.remove();
+  });
+  //cancel modal by pressing escape
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      //remove modal
+      divMain.remove();
+      containerPopup.remove();
+    }
   });
 };
