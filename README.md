@@ -21,7 +21,7 @@ You can check cocktails recipes that you can make with the liquors that you have
 If you decide to choose that cocktail, all your liquors/volumes in your cabinet will be updated accordantly.
 
 ## Functionality
-- [x] SingUp/Login using bcrypt that is a password-hashing function.
+- [x] User can Sign-up/Login.
 - [x] User enters/loads all the bottles of liquor and volumes that are available in the liquor cabinet
 - [x] User requests recipes for the available alcohol
     - [x] API returns all recipes, ingredients with volumes, and procedure
@@ -30,6 +30,7 @@ If you decide to choose that cocktail, all your liquors/volumes in your cabinet 
 - [x] User can remove bottles of liquor from the cabinet
 - [x] User can update the volumes of the liquor in the cabinet
 - [ ] User can save cocktails as favorite.
+- [x] User can Sign-out/Logout, 
 
 ## Use Case
 This Use Case Diagram is graphically showing user's possible interactions with Cocktail Cabinet Application.
@@ -43,8 +44,9 @@ This Database Diagram is graphically showing the structure of the Cocktail Cabin
 
 ## Built With
 - Node.js.
-- PostgreSQL
-- Hosted by Heroku
+- PostgreSQL.
+- Hosted by Heroku.
+- Bcrypt for password-hashing.
 
 ## Knowledge Acquisition
 Mistakes and solutions.
@@ -54,7 +56,7 @@ Mistakes and solutions.
 - Eugene - email
 - Vinicius - 1viniciusprado@gmail.com
 
-Project Link: GitHub-Cocktail-Cabinet
+Project Link: https://github.com/elevin-bot/cocktailCabinet
 
 ## Acknowledgments
 
