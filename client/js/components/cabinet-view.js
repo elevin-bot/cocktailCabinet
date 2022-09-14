@@ -32,7 +32,7 @@ export const renderCabinetView = () => {
         cabinetBottle.className = "cabinetBottle";
         //creating
         const bottleName = document.createElement("div");
-        const bottleVolume = document.createElement("input");
+        const bottleVolume = document.createElement("div");
         const bottleLabel = document.createElement("div");
         const bottleUpdateBtn = document.createElement("button");
         const bottleImage = document.createElement("img");
@@ -42,12 +42,10 @@ export const renderCabinetView = () => {
         bottleLabel.className = "bottleLabel";
         bottleName.className = "bottleName";
         bottleVolume.className = "bottleVolume";
-        bottleVolume.placeholder = "Enter volume (ml)";
         bottleImage.className = "bottleImage";
         bottleRemoveBtn.className = "bottleRemoveBtn";
         bottleName.textContent = item.name;
-        bottleVolume.textContent = item.volume + "ml";
-        bottleVolume.value = item.volume + "ml";
+        bottleVolume.innerHTML = item.volume + "ml";
         bottleLabel.id = item.id;
         bottleImage.src = item.image;
         bottleUpdateBtn.textContent = "Update Volume";
@@ -72,24 +70,13 @@ export const renderCabinetView = () => {
             })
             .catch((err) => (page.textContent = err));
         });
+
         bottleUpdateBtn.addEventListener("click", () => {
-          // Validate volume (strip ml first)
-          let volume = bottleVolume.value.replace("ml", "");
-          if (!volume || volume == 0 || isNaN(volume)) {
-            bottleVolume.value = "";
-            return;
-          }
-          const data = {
-            liquor_id: bottleLabel.id,
-            volume: volume,
-          };
-          axios
-            .put("/api/cabinet/", data)
-            .then(() => {
-              bottleVolume.value = volume + "ml";
-            })
-            .catch((err) => (page.textContent = err));
+          volumeUpdateModal(item.id,item.name,item.volume,bottleVolume);
+          
         });
+
+
       });
     })
     .catch(
@@ -109,4 +96,72 @@ export const renderCabinetView = () => {
   buttonSearch.addEventListener("click", renderCocktailView);
   buttonAddCabinet.addEventListener("click", addToCabinetRender);
   buttonDeleteCabinet.addEventListener("click", deleteCabinetWarning);
+};
+
+
+// volume update modal - util
+const volumeUpdateModal = (liquor_id,name,volume,bottleVolume) => {
+  console.log(volume)
+  console.log(liquor_id)
+
+  const page = document.querySelector("#page");
+
+  // create modal box
+  const volumeUpdateModal = document.createElement("div");
+  const volumeUpdateModalTitle = document.createElement("div");
+  const volumeUpdateModalBody = document.createElement("div");
+  const volumeUpdateModalContainer = document.createElement("div");
+
+  // modal form
+  const volumeUpdateInput = document.createElement("input")
+  const volumeUpdateButton = document.createElement("button")
+  const volumeUpdateCancel = document.createElement("button")
+
+  // setting class tags
+  volumeUpdateModal.className = "volumeUpdateModal"
+  volumeUpdateModalTitle.className = "volumeUpdateModalTitle"
+  volumeUpdateModalBody.className = "volumeUpdateModalBody"
+  volumeUpdateModalContainer.className = "volumeUpdateModalContainer"
+
+  //attach divs
+  // volumeUpdateModal.append(volumeUpdateModalContainer);
+  volumeUpdateModalContainer.append(volumeUpdateModalTitle,volumeUpdateModalBody);
+  volumeUpdateModalBody.append(volumeUpdateInput,volumeUpdateButton,volumeUpdateCancel);
+  
+  page.append(volumeUpdateModal)
+  page.append(volumeUpdateModalContainer)
+
+
+  // giving elements content
+  volumeUpdateModalTitle.innerHTML = name;
+  volumeUpdateInput.innerHTML = volume + "ml";
+  volumeUpdateInput.placeholder = "Enter volume in ml";
+  volumeUpdateButton.innerHTML = "Update";
+  volumeUpdateCancel.innerHTML = "Cancel";
+
+  volumeUpdateButton.addEventListener("click", () => {
+    volume = volumeUpdateInput.value.replace("ml", "");
+          if (!volume || volume == 0 || isNaN(volume)) {
+            volumeUpdateInput.innerHTML = "";
+            return;
+          }
+          const data = {liquor_id, volume};
+          axios
+            .put("/api/cabinet/", data)
+            .then(() => {
+              bottleVolume.innerHTML = volume + "ml";
+              volumeUpdateModal.remove();
+              volumeUpdateModalContainer.remove();
+            })
+            .catch((err) => (page.textContent = err));
+  })
+
+  volumeUpdateCancel.addEventListener("click", () => {
+    volumeUpdateModal.remove();
+    volumeUpdateModalContainer.remove();
+  })
+  volumeUpdateModal.addEventListener("click", () => {
+    volumeUpdateModal.remove();
+    volumeUpdateModalContainer.remove();
+  })
 };
