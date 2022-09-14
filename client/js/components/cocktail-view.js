@@ -76,11 +76,12 @@ export const renderCocktailView = () => {
           axios
             .patch(`/api/cabinet/${recipe.id}`)
             .then((response) => {
-              recipePage.replaceChildren(
-                "All volumes in your cabinet have been updated, ",
-                "\n",
-                "Enjoy your ",
-                recipeTitle
+                renderCabinetView();
+                recipePage.replaceChildren(
+                    "All volumes in your cabinet have been updated, ",
+                    "\n",
+                    "Enjoy your ",
+                    recipeTitle
               );
               recipeBook.replaceChildren(recipePage);
 

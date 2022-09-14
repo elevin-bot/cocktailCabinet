@@ -19,8 +19,6 @@ INSERT INTO cabinet_contents(user_id, liquor_id, volume) values(2, 7, 250);
 
 INSERT INTO liquor(name,image) VALUES('Vodka','./images/alcohol-images/Vodka.png'), ('Tequila','./images/alcohol-images/Tequila.png'), ('Bourbon','./images/alcohol-images/Bourbon.png'), ('White Rum','./images/alcohol-images/WhiteRum.png'), ('Dark Rum', './images/alcohol-images/DarkRum.png'), ('Scotch Whiskey', './images/alcohol-images/ScotchWhiskey.png'), ('Gin','./images/alcohol-images/Gin.png'),('Whiskey','./images/alcohol-images/Whiskey.png'), ('Vermouth','./images/alcohol-images/Vermouth.png'), ('Absinthe','./images/alcohol-images/Absinthe.png'),('Brandy','./images/alcohol-images/Brandy.png');
 
-
-
 -- Mojito </br>
 INSERT INTO cocktail(name,description,procedure) 
 VALUES('Mojito', 
@@ -42,7 +40,7 @@ E'50ml Gin </br>
 E'STEP 1 </br>
 Build the drink over plenty of ice in a Collins glass, stir gently and garnish with a slice of lemon.');
 
-INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(2, 6, 50);
+INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(2, 7, 50);
 
 -- Sex on the beach
 INSERT INTO cocktail(name,description,procedure) 
@@ -78,7 +76,7 @@ E'STEP 1 </br>
 Pulse all the ingredients along with a handful of ice in a blender until smooth. Pour into a tall glass and garnish as you like. 
 ');
 
-INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(5, 4, 60);
+INSERT INTO cocktail_ingredients (cocktail_id, liquor_id, volume) VALUES(5, 7, 60);
 
 -- Ge Special
 INSERT INTO cocktail(name,description,procedure) 
