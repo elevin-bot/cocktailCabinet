@@ -8,20 +8,22 @@ export const addToCabinetRender = () => {
   const divMain = document.createElement("div");
   divMain.id = "divAddForm";
   const h3 = document.createElement("h3");
+  h3.id = "addAlcoholTitle"
   h3.textContent = "Add alcohol to your cabinet";
   const addForm = document.createElement("form");
   addForm.id = "addForm";
   const select = document.createElement("select");
   select.id = "selectAlcohol";
   const cancelBtn = document.createElement("button");
-  cancelBtn.id = "cancel";
+  cancelBtn.id = "cancelAddAlcohol";
   cancelBtn.textContent = "Cancel";
   cancelBtn.type = "Button";
   const addBtn = document.createElement("button");
-  addBtn.id = "Add";
+  addBtn.id = "addAlcoholButton";
   addBtn.textContent = "Add";
   const inputVolume = document.createElement("input");
-  inputVolume.placeholder = "Bottle volume (ml)";
+  inputVolume.id = "inputVolume"
+  inputVolume.placeholder = "volume (ml)";
   inputVolume.setAttribute("required", "");
   inputVolume.type = "number";
 

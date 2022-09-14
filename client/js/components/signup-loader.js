@@ -10,7 +10,7 @@ export const renderSignupLoader = (data) => {
   const signupLoaderButton = document.createElement("button");
 
   // setting values
-  mainComponent.className = "signUpDivMain";
+  mainComponent.className = "signUpLoader";
   signupLoaderTitle.id = "signupLoaderTitle";
   signupLoaderTitle.textContent = "Welcome to your secret cabinet";
   signupLoaderButton.id = "signupLoaderButton";
