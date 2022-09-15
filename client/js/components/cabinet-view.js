@@ -19,7 +19,7 @@ export const renderCabinetView = () => {
   buttonAddCabinet.id = "buttonAddCabinet";
   buttonAddCabinet.textContent = "Add to cabinet";
   buttonDeleteCabinet.id = "buttonDeleteCabinet";
-  buttonDeleteCabinet.textContent = "Delete cabinet and unregister";
+  buttonDeleteCabinet.textContent = "Delete Cabinet";
   cabinet.id = "cabinet";
 
   //API access
@@ -121,6 +121,9 @@ const volumeUpdateModal = (liquor_id,name,volume,bottleVolume) => {
   volumeUpdateModalTitle.className = "volumeUpdateModalTitle"
   volumeUpdateModalBody.className = "volumeUpdateModalBody"
   volumeUpdateModalContainer.className = "volumeUpdateModalContainer"
+  volumeUpdateInput.className = "volumeUpdateInput"
+  volumeUpdateButton.className = "volumeUpdateButton"
+  volumeUpdateCancel.className = "volumeUpdateCancel"
 
   //attach divs
   // volumeUpdateModal.append(volumeUpdateModalContainer);

@@ -35,6 +35,11 @@ export const renderSignup = () => {
   const buttonUnlock = document.createElement("button");
 
   //setting----------------------
+  buttonGetCabinet.id = "buttonGetCabinet"
+  buttonUnlock.id = "buttonUnlock"
+  h3.id = "signupTitle"
+  p.id = "alreadyHaveTitle"
+
 
   // setting main div
   divMain.className = "signUpDivMain";

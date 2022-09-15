@@ -23,6 +23,10 @@ export const renderLogin = () => {
   const labelPassword = document.createElement("label");
 
   //setting----------------------
+  buttonUnlockCabinet.id = "buttonUnlockCabinet"
+  buttonSignup.id = "buttonSignup"
+  h3.id = "loginTitle"
+  p.id = "noLoginTitle"
 
   // setting main div
   divMain.className = "loginDivMain";
