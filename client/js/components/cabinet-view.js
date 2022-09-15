@@ -19,7 +19,7 @@ export const renderCabinetView = () => {
   buttonAddCabinet.id = "buttonAddCabinet";
   buttonAddCabinet.textContent = "Add to cabinet";
   buttonDeleteCabinet.id = "buttonDeleteCabinet";
-  buttonDeleteCabinet.textContent = "Delete cabinet and unregister";
+  buttonDeleteCabinet.textContent = "Delete Cabinet";
   cabinet.id = "cabinet";
 
   //API access
@@ -32,7 +32,7 @@ export const renderCabinetView = () => {
         cabinetBottle.className = "cabinetBottle";
         //creating
         const bottleName = document.createElement("div");
-        const bottleVolume = document.createElement("input");
+        const bottleVolume = document.createElement("div");
         const bottleLabel = document.createElement("div");
         const bottleUpdateBtn = document.createElement("button");
         const bottleImage = document.createElement("img");
@@ -42,12 +42,10 @@ export const renderCabinetView = () => {
         bottleLabel.className = "bottleLabel";
         bottleName.className = "bottleName";
         bottleVolume.className = "bottleVolume";
-        bottleVolume.placeholder = "Enter volume (ml)";
         bottleImage.className = "bottleImage";
         bottleRemoveBtn.className = "bottleRemoveBtn";
         bottleName.textContent = item.name;
-        bottleVolume.textContent = item.volume + "ml";
-        bottleVolume.value = item.volume + "ml";
+        bottleVolume.innerHTML = item.volume + "ml";
         bottleLabel.id = item.id;
         bottleImage.src = item.image;
         bottleUpdateBtn.textContent = "Update Volume";
@@ -64,32 +62,22 @@ export const renderCabinetView = () => {
 
         //Event Listeners for each liquor on the cabinet
         bottleRemoveBtn.addEventListener("click", () => {
-          const id = bottleLabel.id;
-          axios
-            .delete(`/api/cabinet/${id}`)
-            .then(() => {
-              renderCabinetView();
-            })
-            .catch((err) => (page.textContent = err));
+          removeAlcoholModal(item.id, item.name);
+          // const id = bottleLabel.id;
+          // axios
+          //   .delete(`/api/cabinet/${id}`)
+          //   .then(() => {
+          //     renderCabinetView();
+          //   })
+          //   .catch((err) => (page.textContent = err));
         });
+
         bottleUpdateBtn.addEventListener("click", () => {
-          // Validate volume (strip ml first)
-          let volume = bottleVolume.value.replace("ml", "");
-          if (!volume || volume == 0 || isNaN(volume)) {
-            bottleVolume.value = "";
-            return;
-          }
-          const data = {
-            liquor_id: bottleLabel.id,
-            volume: volume,
-          };
-          axios
-            .put("/api/cabinet/", data)
-            .then(() => {
-              bottleVolume.value = volume + "ml";
-            })
-            .catch((err) => (page.textContent = err));
+          volumeUpdateModal(item.id,item.name,item.volume,bottleVolume);
+          
         });
+
+
       });
     })
     .catch(
@@ -110,3 +98,125 @@ export const renderCabinetView = () => {
   buttonAddCabinet.addEventListener("click", addToCabinetRender);
   buttonDeleteCabinet.addEventListener("click", deleteCabinetWarning);
 };
+
+
+// volume update modal - util
+const volumeUpdateModal = (liquor_id,name,volume,bottleVolume) => {
+  
+  const page = document.querySelector("#page");
+
+  // create modal box
+  const volumeUpdateModal = document.createElement("div");
+  const volumeUpdateModalTitle = document.createElement("div");
+  const volumeUpdateModalBody = document.createElement("div");
+  const volumeUpdateModalContainer = document.createElement("div");
+
+  // modal form
+  const volumeUpdateInput = document.createElement("input")
+  const volumeUpdateButton = document.createElement("button")
+  const volumeUpdateCancel = document.createElement("button")
+
+  // setting class tags
+  volumeUpdateModal.className = "volumeUpdateModal"
+  volumeUpdateModalTitle.className = "volumeUpdateModalTitle"
+  volumeUpdateModalBody.className = "volumeUpdateModalBody"
+  volumeUpdateModalContainer.className = "volumeUpdateModalContainer"
+  volumeUpdateInput.className = "volumeUpdateInput"
+  volumeUpdateButton.className = "volumeUpdateButton"
+  volumeUpdateCancel.className = "volumeUpdateCancel"
+
+  //attach divs
+  // volumeUpdateModal.append(volumeUpdateModalContainer);
+  volumeUpdateModalContainer.append(volumeUpdateModalTitle,volumeUpdateModalBody);
+  volumeUpdateModalBody.append(volumeUpdateInput,volumeUpdateButton,volumeUpdateCancel);
+  
+  page.append(volumeUpdateModal)
+  page.append(volumeUpdateModalContainer)
+
+
+  // giving elements content
+  volumeUpdateModalTitle.innerHTML = name;
+  volumeUpdateInput.innerHTML = volume + "ml";
+  volumeUpdateInput.placeholder = "Enter volume in ml";
+  volumeUpdateButton.innerHTML = "Update";
+  volumeUpdateCancel.innerHTML = "Cancel";
+
+  volumeUpdateButton.addEventListener("click", () => {
+    volume = volumeUpdateInput.value.replace("ml", "");
+          if (!volume || volume == 0 || isNaN(volume)) {
+            volumeUpdateInput.innerHTML = "";
+            return;
+          }
+          const data = {liquor_id, volume};
+          axios
+            .put("/api/cabinet/", data)
+            .then(() => {
+              bottleVolume.innerHTML = volume + "ml";
+              volumeUpdateModal.remove();
+              volumeUpdateModalContainer.remove();
+            })
+            .catch((err) => (page.textContent = err));
+  })
+
+  volumeUpdateCancel.addEventListener("click", () => {
+    volumeUpdateModal.remove();
+    volumeUpdateModalContainer.remove();
+  })
+  volumeUpdateModal.addEventListener("click", () => {
+    volumeUpdateModal.remove();
+    volumeUpdateModalContainer.remove();
+  })
+};
+
+// remove alcohol from cabinet modal
+const removeAlcoholModal = (id,name) => {
+  const page = document.querySelector("#page");
+
+  // create modal elements
+  const removeAlcoholModal = document.createElement("div");
+  const removeAlcoholModalContainer = document.createElement("div");
+  const RAMtitle = document.createElement("div");
+  const RAMbody = document.createElement("div");
+  const RAMyes = document.createElement("button");
+  const RAMno = document.createElement("button");
+
+  // set class tags
+  removeAlcoholModal.className = "containerPopup";
+  removeAlcoholModalContainer.className = "removeAlcoholModalContainer"
+  RAMtitle.className = "RAMtitle";
+  RAMbody.className = "RAMbody";
+  RAMyes.className = "RAMyes";
+  RAMno.className = "RAMno";
+
+  RAMtitle.innerHTML = `Are you sure you want to remove ${ name } from cabinet?`
+  RAMyes.innerHTML = "Yes"
+  RAMno.innerHTML = "No"
+
+  // append
+  removeAlcoholModalContainer.append(RAMtitle,RAMbody);
+  RAMbody.append(RAMyes,RAMno);
+  page.append(removeAlcoholModal, removeAlcoholModalContainer);
+  
+  RAMyes.addEventListener("click", () => {
+    axios
+            .delete(`/api/cabinet/${id}`)
+            .then(() => {
+              removeAlcoholModal.remove();
+              removeAlcoholModalContainer.remove();
+              renderCabinetView();
+            })
+  })
+
+  RAMno.addEventListener("click", () => {
+    removeAlcoholModal.remove();
+    removeAlcoholModalContainer.remove();
+
+  })
+
+  removeAlcoholModal.addEventListener("click", () => {
+    removeAlcoholModal.remove();
+    removeAlcoholModalContainer.remove();
+
+  })
+
+}
