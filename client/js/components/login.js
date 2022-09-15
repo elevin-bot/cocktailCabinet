@@ -31,9 +31,11 @@ export const renderLogin = () => {
   h3.textContent = "Login to access your cabinet";
   inputEmail.placeholder = "Email Address";
   inputEmail.name = "email";
+  inputEmail.setAttribute("required", "");
   inputPassword.placeholder = "Password";
   inputPassword.name = "password";
   inputPassword.type = "password";
+  inputPassword.setAttribute("required", "");
   buttonUnlockCabinet.textContent = "Unlock your cabinet";
   // setting div right
   divRight.className = "loginDivRight";
