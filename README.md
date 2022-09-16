@@ -51,7 +51,7 @@ Mistakes and solutions.
 
 ## Engineers
 - Alvin
-- Eugene
+- Eugene Levin
 - Vinicius - 1viniciusprado@gmail.com
 
 **Project URL:** https://github.com/elevin-bot/cocktailCabinet
