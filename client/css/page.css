@@ -54,12 +54,6 @@ body {
   
 }
 
-#buttonAddCabinet,#buttonDeleteCabinet{
-  background-color:#755139;
-  color: #F2EDD7;
-}
-
-
 /* ---------page/mainbody--------- */
 
 #page {
@@ -110,6 +104,10 @@ body {
   align-items: center;
   align-content: center;
   
+}
+#buttonGetCabinet[disabled="disabled"],
+#buttonGetCabinet:disabled {
+  opacity: 0.3;
 }
 
 /* CABINET VIEW */
@@ -283,6 +281,10 @@ body {
   text-transform: uppercase;
   border-bottom: 100px;
   color: #F2EDD7;
+  background-color: #f2edd726;
+}
+.recipeTitle:hover {
+  background-color: #f2edd75d;
 }
 
 .recipeDescription {
@@ -390,6 +392,8 @@ body {
   text-transform: uppercase;
   padding: 10px 20px;
   margin: 40px 20px;
+  background-color:#755139;
+  color: #F2EDD7;
 }
 
 
@@ -467,15 +471,6 @@ body {
   justify-content: center;
 };
 
-.RAMyes,
-.RAMno{
-  background-color:#755139;
-  color: #F2EDD7;
-  text-transform: uppercase;
-  margin: 10px;
-  padding: 10px 20px;
-}
-
 .RAMbody{
   justify-content: space-between;
 }
@@ -492,7 +487,8 @@ body {
   font-size: 20px;
 }
 
-.volumeUpdateCancel,.volumeUpdateButton,.volumeUpdateInput{
+.volumeUpdateCancel,.volumeUpdateButton,.volumeUpdateInput, .RAMyes,
+.RAMno{
   background-color:#755139;
   color: #F2EDD7;
   text-transform: uppercase;
@@ -552,7 +548,7 @@ body {
   padding: 10px 20px;
 }
 
-#buttonUnlockCabinet, #buttonSignup, #buttonUnlock, #buttonGetCabinet, #signupLoaderButton{
+#buttonUnlockCabinet, #buttonSignup, #buttonUnlock, #buttonGetCabinet, #signupLoaderButton, .logoutButtons{
   background-color:#755139;
   color: #F2EDD7;
   text-transform: uppercase;

@@ -1,6 +1,7 @@
+/* Only for the input that pops out the label at signup/login */
 .divLayoutInput {
   position: relative;
-  margin: 10px;
+  margin: 20px;
 }
 .inputLayout {
   border-radius: 5px;
@@ -12,8 +13,7 @@
   outline-color: #278aa9;
 }
 .inputLayout:not(:placeholder-shown) + .labelLayout {
-  background: #fff;
-  transform: translate(0, -50%);
+  transform: translate(0, -100%);
   opacity: 1;
 }
 .labelLayout {
@@ -21,6 +21,8 @@
   left: 8px;
   position: absolute;
   top: 0;
+
+  background-color: transparent;
 
   /* Hide it by default */
   opacity: 0;

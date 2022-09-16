@@ -35,11 +35,10 @@ export const renderSignup = () => {
   const buttonUnlock = document.createElement("button");
 
   //setting----------------------
-  buttonGetCabinet.id = "buttonGetCabinet"
-  buttonUnlock.id = "buttonUnlock"
-  h3.id = "signupTitle"
-  p.id = "alreadyHaveTitle"
-
+  buttonGetCabinet.id = "buttonGetCabinet";
+  buttonUnlock.id = "buttonUnlock";
+  h3.id = "signupTitle";
+  p.id = "alreadyHaveTitle";
 
   // setting main div
   divMain.className = "signUpDivMain";
@@ -72,14 +71,18 @@ export const renderSignup = () => {
 
   inputName.placeholder = "Enter your name";
   inputName.name = "name";
+  inputName.setAttribute("required", "");
   inputEmail.placeholder = "Email Address";
   inputEmail.name = "email";
+  inputEmail.setAttribute("required", "");
   inputPassword.placeholder = "Password";
   inputPassword.name = "password";
   inputPassword.type = "password";
+  inputPassword.setAttribute("required", "");
   inputPasswordCheck.placeholder = "Reenter password";
   inputPasswordCheck.name = "passwordCheck";
   inputPasswordCheck.type = "password";
+  inputPasswordCheck.setAttribute("required", "");
   buttonGetCabinet.name = "buttonGetCabinet";
   buttonGetCabinet.textContent = "Get me a cabinet";
   buttonGetCabinet.disabled = true;
@@ -151,15 +154,28 @@ export const renderSignup = () => {
   inputName.addEventListener("input", () => {
     validateForm();
   });
+  inputName.addEventListener("focusout", () => {
+    validateForm();
+  });
   //validating EMAIL - using class ValidateEmail()
   inputEmail.addEventListener("input", () => {
     validateForm();
   });
+  inputEmail.addEventListener("focusout", () => {
+    validateForm();
+  });
+  //validating PASSWORD
   inputPassword.addEventListener("input", () => {
+    validateForm();
+  });
+  inputPassword.addEventListener("focusout", () => {
     validateForm();
   });
   //validating PASSWORD CHECK
   inputPasswordCheck.addEventListener("input", (e) => {
+    validateForm();
+  });
+  inputPasswordCheck.addEventListener("focusout", () => {
     validateForm();
   });
   //redirect to Login
@@ -182,7 +198,7 @@ const validateForm = () => {
   const errorsArray = [];
   //name
   if (!name) {
-    errorsArray.push("Please provide your name.");
+    errorsArray.push("Please provide your name");
   }
   //email
   if (email) {
@@ -194,7 +210,7 @@ const validateForm = () => {
   //password
   if (password) {
     const passwordErrorArray = validatePasswordFormat(password);
-    if (passwordErrorArray.length === 0) {
+    if (passwordErrorArray.length == 0) {
     } else {
       errorsArray.push(passwordErrorArray[0]);
     }
