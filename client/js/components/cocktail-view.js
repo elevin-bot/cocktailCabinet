@@ -24,8 +24,7 @@ export const renderCocktailView = () => {
 
       // Cocktails heading
       const recipeBookHeading = document.createElement("h3");
-      recipeBookHeading.innerHTML =
-        `These are the current cocktails you can create. \n 
+      recipeBookHeading.innerHTML = `These are the current cocktails you can create. \n 
         Click on a cocktail to see more details and the recipe`;
       recipeBookHeading.id = "recipeBookHeading";
       recipeBook.append(recipeBookHeading);

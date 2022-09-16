@@ -1,15 +1,13 @@
 button {
   cursor: pointer;
-  
   border-radius: 5px;
-  /* border-right-color: #3ed2ff7e; */
   transition: 00.7s;
 }
 button:hover {
   border-right-color: transparent;
-  /* border-left-color: #3ed2ff7e; */
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
 .error {
   color: red;
 }

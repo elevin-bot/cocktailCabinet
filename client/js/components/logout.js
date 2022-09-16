@@ -15,7 +15,9 @@ export const renderLogOut = () => {
   divMain.className = "logOutReconfirm";
   p.textContent = "Are you sure you want to logout?";
   buttonYes.textContent = "Yes";
+  buttonYes.className = "logoutButtons";
   buttonCancel.textContent = "Cancel";
+  buttonCancel.className = "logoutButtons";
 
   //appending------------------------------
   divMain.append(p, buttonYes, buttonCancel);

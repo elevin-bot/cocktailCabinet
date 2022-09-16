@@ -23,10 +23,10 @@ export const renderLogin = () => {
   const labelPassword = document.createElement("label");
 
   //setting----------------------
-  buttonUnlockCabinet.id = "buttonUnlockCabinet"
-  buttonSignup.id = "buttonSignup"
-  h3.id = "loginTitle"
-  p.id = "noLoginTitle"
+  buttonUnlockCabinet.id = "buttonUnlockCabinet";
+  buttonSignup.id = "buttonSignup";
+  h3.id = "loginTitle";
+  p.id = "noLoginTitle";
 
   // setting main div
   divMain.className = "loginDivMain";
@@ -35,11 +35,11 @@ export const renderLogin = () => {
   h3.textContent = "Login to access your cabinet";
   inputEmail.placeholder = "Email Address";
   inputEmail.name = "email";
-  inputEmail.setAttribute("required", "");
+  inputEmail.required = "true";
   inputPassword.placeholder = "Password";
   inputPassword.name = "password";
   inputPassword.type = "password";
-  inputPassword.setAttribute("required", "");
+  inputPassword.required = "true";
   buttonUnlockCabinet.textContent = "Unlock your cabinet";
   // setting div right
   divRight.className = "loginDivRight";
